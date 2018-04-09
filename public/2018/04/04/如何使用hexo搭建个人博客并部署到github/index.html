@@ -5,15 +5,20 @@
     
     <title>如何使用hexo搭建个人博客并部署到github | SanW</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="keywords" content="ios">
+    <meta name="description" content="使用Hexo搭建个人博客">
+<meta name="keywords" content="github,blog">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何使用hexo搭建个人博客并部署到github">
 <meta property="og:url" content="http://sanwcoder.github.io/2018/04/04/如何使用hexo搭建个人博客并部署到github/index.html">
 <meta property="og:site_name" content="SanW">
+<meta property="og:description" content="使用Hexo搭建个人博客">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-04T03:47:54.000Z">
+<meta property="og:image" content="http://sanwcoder.github.io/gallery/blog.jpeg">
+<meta property="og:updated_time" content="2018-04-09T09:56:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用hexo搭建个人博客并部署到github">
+<meta name="twitter:description" content="使用Hexo搭建个人博客">
+<meta name="twitter:image" content="http://sanwcoder.github.io/gallery/blog.jpeg">
     
 
     
@@ -154,11 +159,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                3
+                2
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                2
+                3
                 <span>标签</span>
             </div>
         </div>
@@ -218,16 +223,75 @@
 
 
                         
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/blog/">blog</a>
+    </div>
+
                         
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/blog/">blog</a>, <a class="tag-link" href="/tags/github/">github</a>
+    </div>
+
                     </div>
                 
             </header>
         
         
+<div class="article-gallery">
+    
+    <a class="gallery-item" href="/gallery/blog.jpeg" rel="gallery_cjfs2brvw0003zov58aq3vsdg">
+        <img src="/gallery/blog.jpeg" itemprop="image" />
+    </a>
+    
+</div>
+
         <div class="article-entry" itemprop="articleBody">
         
             
-            
+            <p>使用Hexo搭建个人博客</p>
+<a id="more"></a>
+<h2 id="安装-amp-搭建"><a href="#安装-amp-搭建" class="headerlink" title="安装&amp;搭建"></a>安装&amp;搭建</h2><h4 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h4><ul>
+<li>到<a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js官网</a>下载相应版本按照提示安装</li>
+<li>使用Homebrow安装</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/<span class="regexp">/ 1. 安装HomeBrow</span></span><br><span class="line"><span class="regexp">~ ruby -e "$(curl -fsSL https:/</span><span class="regexp">/raw.githubusercontent.com/</span>Homebrew/install/master/install)<span class="string">"</span></span><br><span class="line"><span class="string">// 2. 安装node</span></span><br><span class="line"><span class="string">~ brew install node</span></span><br><span class="line"><span class="string">// 3. 安装完成后测试是否安装成功</span></span><br><span class="line"><span class="string">// 3.1 查看node版本</span></span><br><span class="line"><span class="string">~ node -version</span></span><br><span class="line"><span class="string">// 3.2 查看npm版本</span></span><br><span class="line"><span class="string">~ npm -version</span></span><br></pre></td></tr></table></figure>
+<h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a></h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<h4 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~ brew install git</span><br></pre></td></tr></table></figure>
+<h4 id="配置GitHub"><a href="#配置GitHub" class="headerlink" title="配置GitHub"></a>配置GitHub</h4><p>在你的Github下创建新仓库并将仓库名命名为 <strong>GitHub名.github.io</strong>这样命名后GitHub会自动 启用 GitHub Pages并将你的博客地址设置为 <strong><a href="https://GitHub名.github.io/" target="_blank" rel="noopener">https://GitHub名.github.io/</a></strong></p>
+<h2 id="初步搭建-amp-本地测试"><a href="#初步搭建-amp-本地测试" class="headerlink" title="初步搭建&amp;本地测试"></a>初步搭建&amp;本地测试</h2><ul>
+<li>使用Hexo创建博客</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~ hexo init &lt;folder&gt;</span><br><span class="line">~ cd &lt;folder&gt;</span><br><span class="line">~ npm install</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建完成后在相应的文件=夹中会有如下显示</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml  // 必要的配置文件，如博客名</span><br><span class="line">├── package.json // 应用程序的信息</span><br><span class="line">├── scaffolds  // 模版文件夹,post.md,drafts.md</span><br><span class="line">├── source    // 资源文件夹</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes // 主题文件夹</span><br></pre></td></tr></table></figure>
+<ul>
+<li>本地测试</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 清除缓存文件</span><br><span class="line">~ hexo clean </span><br><span class="line">// 生成静态文件</span><br><span class="line">~ hexo generate/g</span><br><span class="line">// 启动服务器</span><br><span class="line">~ hexo server</span><br><span class="line">// 服务器启动以后再浏览器中打开 http://localhost:4000/即可查看博客</span><br></pre></td></tr></table></figure>
+<h2 id="自定义（以Icarus主题为例）"><a href="#自定义（以Icarus主题为例）" class="headerlink" title="自定义（以Icarus主题为例）"></a>自定义（以<a href="https://github.com/ppoffice/hexo-theme-icarus.git" target="_blank" rel="noopener">Icarus</a>主题为例）</h2><ul>
+<li>下载相应的主题<a href="https://hexo.io/themes/" target="_blank" rel="noopener">主题</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~ git clone https://github.com/ppoffice/hexo-theme-icarus.git</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置_config.yml</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">title: SanW // 标题</span><br><span class="line">subtitle:  // 福标题</span><br><span class="line">description: // 描述</span><br><span class="line">keywords: ios // 搜索关键字</span><br><span class="line">author: // 作者</span><br><span class="line">language: zh-CN // Hexo支持国际化，设置相应语言在/themes/icarus/languages 下</span><br><span class="line">url: http://sanwcoder.github.io // 设置成你的博客地址</span><br><span class="line">// 文件root，如果直接在当前文件夹下设置为/，切记要设置正确，设置错误会加载不出来样式</span><br><span class="line">root: / </span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br><span class="line">// 设置你下载的主题，将你下载的主题放到themes文件夹下，并在这儿设置为相应的主题</span><br><span class="line">theme: icarus</span><br><span class="line">// 部署到github</span><br><span class="line">deploy:</span><br><span class="line">  type: git // 类型为git</span><br><span class="line">  repo: // 仓库的完整地址，在部署时会部署到git库的master分支上</span><br></pre></td></tr></table></figure>
+<ul>
+<li>更改相应主题的_config.yml</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Menus</span></span><br><span class="line">/<span class="regexp">/ 菜单栏</span></span><br><span class="line"><span class="regexp">menu:</span></span><br><span class="line"><span class="regexp">  Home: .</span></span><br><span class="line"><span class="regexp">  Archives: archives</span></span><br><span class="line"><span class="regexp">  Categories: categories</span></span><br><span class="line"><span class="regexp">  Tags: tags</span></span><br><span class="line"><span class="regexp">  About: about</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"># Customize</span></span><br><span class="line"><span class="regexp">customize:</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 网站图标</span></span><br><span class="line"><span class="regexp">    logo:</span></span><br><span class="line"><span class="regexp">        enabled: true</span></span><br><span class="line"><span class="regexp">        width: 40</span></span><br><span class="line"><span class="regexp">        height: 40</span></span><br><span class="line"><span class="regexp">        url: images/icon</span>.jpg</span><br><span class="line">    <span class="symbol">profile:</span></span><br><span class="line">        <span class="symbol">enabled:</span> <span class="literal">true</span> </span><br><span class="line">        <span class="symbol">avatar:</span> css/images/icon.jpg</span><br><span class="line">        <span class="symbol">author:</span> /<span class="regexp">/ 网站作者</span></span><br><span class="line"><span class="regexp">        author_title: /</span><span class="regexp">/ 作者简介</span></span><br><span class="line"><span class="regexp">        location: /</span><span class="regexp">/ 位置 FengTai, China</span></span><br><span class="line"><span class="regexp">        follow: /</span><span class="regexp">/ 作者github地址</span></span><br><span class="line"><span class="regexp">    social_links: /</span><span class="regexp">/ 其他社交链接</span></span><br><span class="line"><span class="regexp">        github: </span></span><br><span class="line"><span class="regexp">        Weibo: </span></span><br><span class="line"><span class="regexp">        email: </span></span><br><span class="line"><span class="regexp">    social_link_tooltip: true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>部署到github</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 清除缓存文件</span></span><br><span class="line">~ hexo clean </span><br><span class="line"><span class="comment">// 生成文件</span></span><br><span class="line">~ hexo g</span><br><span class="line"><span class="comment">// 部署</span></span><br><span class="line">~ hexo d</span><br></pre></td></tr></table></figure>
+<ul>
+<li>访问<a href="https://GitHub名.github.io" target="_blank" rel="noopener">https://GitHub名.github.io</a></li>
+</ul>
+<h2 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h2>
         
         </div>
         <footer class="article-footer">
@@ -237,7 +301,7 @@
 
 </div>
 
-    <a data-url="http://sanwcoder.github.io/2018/04/04/如何使用hexo搭建个人博客并部署到github/" data-id="cjfrx2zlg000736v51vygt40q" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://sanwcoder.github.io/2018/04/04/如何使用hexo搭建个人博客并部署到github/" data-id="cjfs2brvw0003zov58aq3vsdg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -324,11 +388,6 @@
         </a>
     
     
-        <a href="/2018/03/30/test/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">视频学习</div>
-        </a>
-    
 </nav>
 
 
@@ -381,35 +440,16 @@
                             <a href="/2018/04/04/如何使用hexo搭建个人博客并部署到github/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/gallery/blog.jpeg)" alt="如何使用hexo搭建个人博客并部署到github" class="thumbnail-image"></span>
     
 </a>
 
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/blog/">blog</a></p>
                             <p class="item-title"><a href="/2018/04/04/如何使用hexo搭建个人博客并部署到github/" class="title">如何使用hexo搭建个人博客并部署到github</a></p>
                             <p class="item-date"><time datetime="2018-04-04T03:47:54.000Z" itemprop="datePublished">2018-04-04</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/03/30/test/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/gallery/视频录制.png)" alt="视频学习" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/IOS/">IOS</a></p>
-                            <p class="item-title"><a href="/2018/03/30/test/" class="title">视频学习</a></p>
-                            <p class="item-date"><time datetime="2018-03-29T16:00:00.000Z" itemprop="datePublished">2018-03-30</time></p>
                         </div>
                     </li>
                 
@@ -422,7 +462,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IOS/">IOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -431,7 +471,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -440,7 +480,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-C/">Object-C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频/">视频</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-C/">Object-C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -449,7 +489,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Object-C/" style="font-size: 10px;">Object-C</a> <a href="/tags/视频/" style="font-size: 10px;">视频</a>
+            <a href="/tags/Object-C/" style="font-size: 10px;">Object-C</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/github/" style="font-size: 10px;">github</a>
         </div>
     </div>
 

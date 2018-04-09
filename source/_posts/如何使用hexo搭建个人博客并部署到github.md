@@ -8,11 +8,14 @@ tags:
 categories:
  - blog
 photos:
+ - /gallery/blog.jpeg
 thumbnail:
+ - /gallery/blog.jpeg
 ---
 
+使用Hexo搭建个人博客
 
-<!--more-->
+<!-- more -->
 
 ## 安装&搭建
 
