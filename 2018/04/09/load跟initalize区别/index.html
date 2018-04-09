@@ -3,16 +3,22 @@
 <head>
     <meta charset="utf-8">
     
-    <title>SanW</title>
+    <title>load跟initalize区别 | SanW</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="keywords" content="ios">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SanW">
-<meta property="og:url" content="http://sanwcoder.github.io/index.html">
+    <meta name="description" content="initialize 和  load 是 NSObject 的两个特殊类方法，在面试过程中很有可能会问到同时在工作中我们也可以利用其相应的特性做一些操作。">
+<meta name="keywords" content="Object-C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="load跟initalize区别">
+<meta property="og:url" content="http://sanwcoder.github.io/2018/04/09/load跟initalize区别/index.html">
 <meta property="og:site_name" content="SanW">
+<meta property="og:description" content="initialize 和  load 是 NSObject 的两个特殊类方法，在面试过程中很有可能会问到同时在工作中我们也可以利用其相应的特性做一些操作。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://sanwcoder.github.io/gallery/+load（）调用流程图.png">
+<meta property="og:updated_time" content="2018-04-09T07:23:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SanW">
+<meta name="twitter:title" content="load跟initalize区别">
+<meta name="twitter:description" content="initialize 和  load 是 NSObject 的两个特殊类方法，在面试过程中很有可能会问到同时在工作中我们也可以利用其相应的特性做一些操作。">
+<meta name="twitter:image" content="http://sanwcoder.github.io/gallery/+load（）调用流程图.png">
     
 
     
@@ -193,16 +199,15 @@
 </aside>
 
             
-            <section id="main">
-    <article id="post-load跟initalize区别" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-load跟initalize区别" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
             <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/04/09/load跟initalize区别/">load跟initalize区别</a>
+        <h1 class="article-title" itemprop="name">
+            load跟initalize区别
         </h1>
     
 
@@ -244,10 +249,40 @@
 
         <div class="article-entry" itemprop="articleBody">
         
-            <p><p><font color="#31AEE7" size="5" face="“宋体”">initialize</font> 和 <font color="#31AEE7" size="5" face="“宋体”"> load </font>是 NSObject 的两个特殊类方法，在面试过程中很有可能会问到同时在工作中我们也可以利用其相应的特性做一些操作。</p></p>
-            <p class="article-more-link">
-                <a href="/2018/04/09/load跟initalize区别/#more">查看更多</a>
-            </p>
+            
+            <p><font color="#31AEE7" size="5" face="“宋体”">initialize</font> 和 <font color="#31AEE7" size="5" face="“宋体”"> load </font>是 NSObject 的两个特殊类方法，在面试过程中很有可能会问到同时在工作中我们也可以利用其相应的特性做一些操作。</p>
+<a id="more"></a>  
+<h3 id="一-load"><a href="#一-load" class="headerlink" title="一. load"></a>一. load</h3><h5 id="1-gt-基本区别"><a href="#1-gt-基本区别" class="headerlink" title="1&gt; 基本区别"></a>1&gt; 基本区别</h5><ol>
+<li>load是在程序运行时出发（加入编译文件Compile Sources），且仅调用一次，无需手动调用。</li>
+<li>load 方法不遵从继承规则，如果类本身没有实现load方法，那么系统就不会调用，谁实现就会调用谁的load方法。</li>
+<li>尽可能的精简load方法，因为整个应用程序在执行load方法时会阻塞，即，程序会阻塞直到所有类的load方法执行完毕，才会继续</li>
+<li>load 方法中最常用的就是方法交换method swizzling</li>
+</ol>
+<h5 id="2-gt-实例分析"><a href="#2-gt-实例分析" class="headerlink" title="2&gt; 实例分析"></a>2&gt; 实例分析</h5><p>开发文档说明：<br><img src="/gallery/load API.png" alt="load API"></p>
+<ol>
+<li>创建类及其load方法</li>
+</ol>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// People.m</span></span><br><span class="line">+ (<span class="keyword">void</span>)load&#123;<span class="built_in">NSLog</span>(<span class="string">@"class == People,method == load"</span>);&#125;</span><br><span class="line"><span class="comment">// Student.m 继承自People</span></span><br><span class="line">+ (<span class="keyword">void</span>)load&#123;<span class="built_in">NSLog</span>(<span class="string">@"class == Student,method == load"</span>);&#125;</span><br><span class="line"><span class="comment">// Teacher.m 继承自People</span></span><br><span class="line">+ (<span class="keyword">void</span>)load&#123;<span class="built_in">NSLog</span>(<span class="string">@"class == Teacher,method == load"</span>);&#125;</span><br><span class="line"><span class="comment">// People+Ext.m People的分类</span></span><br><span class="line">+ (<span class="keyword">void</span>)load&#123;<span class="built_in">NSLog</span>(<span class="string">@"class == People (Ext),method == load"</span>);&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// method swizzling 实现方法交换</span></span><br><span class="line">+ (<span class="keyword">void</span>)load&#123;</span><br><span class="line">    Method personMethod = class_getInstanceMethod([Person <span class="keyword">class</span>], <span class="built_in">NSSelectorFromString</span>(<span class="string">@"personSay"</span>));</span><br><span class="line">    </span><br><span class="line">     Method studentMethod = class_getInstanceMethod([Student <span class="keyword">class</span>], <span class="built_in">NSSelectorFromString</span>(<span class="string">@"studentSay"</span>));</span><br><span class="line"></span><br><span class="line">    method_exchangeImplementations(personMethod, studentMethod);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>运行结果</li>
+</ol>
+<p><img src="/gallery/load终端调用顺序.png" alt="load终端调用结果"></p>
+<h4 id="二-initalize"><a href="#二-initalize" class="headerlink" title="二. initalize"></a>二. initalize</h4><h5 id="1-gt-基本区别-1"><a href="#1-gt-基本区别-1" class="headerlink" title="1&gt; 基本区别"></a>1&gt; 基本区别</h5><ol>
+<li>当某个类第一次收到消息的时候触发,且只调用一次，无需手动调用。</li>
+<li>父类实现initalize，子类没有实现，调用子类会同时触发父类两次</li>
+<li>父类实现initalize，子类也实现，调用子类会先触发父类再触发子类</li>
+<li>父类实现initalize，父类分类也实现，分类方法会覆盖父类方法，调用的是分类方法</li>
+</ol>
+<h5 id="2-gt-实例分析-1"><a href="#2-gt-实例分析-1" class="headerlink" title="2&gt; 实例分析"></a>2&gt; 实例分析</h5><p>开发文档说明：<br><img src="/gallery/initialize API.png" alt="initialize API"></p>
+<ol>
+<li>创建类及其initialize方法</li>
+</ol>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// People.m</span></span><br><span class="line">+ (<span class="keyword">void</span>)initialize&#123;<span class="built_in">NSLog</span>(<span class="string">@"class == %@,method == initialize"</span>,<span class="built_in">NSStringFromClass</span>([<span class="keyword">self</span> <span class="keyword">class</span>]));&#125;</span><br><span class="line"><span class="comment">// Student.m 继承自People</span></span><br><span class="line">+ (<span class="keyword">void</span>)initialize&#123;<span class="built_in">NSLog</span>(<span class="string">@"class == %@,method == initialize"</span>,<span class="built_in">NSStringFromClass</span>([<span class="keyword">self</span> <span class="keyword">class</span>]));&#125;</span><br><span class="line"><span class="comment">// People+Ext.m People的分类</span></span><br><span class="line">+ (<span class="keyword">void</span>)initialize&#123;<span class="built_in">NSLog</span>(<span class="string">@"class categary == %@,method == initialize"</span>,<span class="built_in">NSStringFromClass</span>([<span class="keyword">self</span> <span class="keyword">class</span>]));&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>运行结果</li>
+</ol>
+<p><img src="/gallery/initalize终端调用顺序.png" alt="initalize终端调用结果"></p>
+
         
         </div>
         <footer class="article-footer">
@@ -331,270 +366,30 @@
         </footer>
     </div>
     
-</article>
-
-
-
-    <article id="post-如何使用hexo搭建个人博客并部署到github" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
         
-        
-            <header class="article-header">
-                
+<nav id="article-nav">
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/04/04/如何使用hexo搭建个人博客并部署到github/">如何使用hexo搭建个人博客并部署到github</a>
-        </h1>
     
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/04/04/如何使用hexo搭建个人博客并部署到github/">
-            <time datetime="2018-04-04T03:47:54.000Z" itemprop="datePublished">2018-04-04</time>
+        <a href="/2018/04/04/如何使用hexo搭建个人博客并部署到github/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">如何使用hexo搭建个人博客并部署到github</div>
         </a>
-    </div>
-
-
-                        
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://sanwcoder.github.io/2018/04/04/如何使用hexo搭建个人博客并部署到github/" data-id="cjfrwvqw30007yav55zxevyrj" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
-        <a href="http://sanwcoder.github.io/2018/04/04/如何使用hexo搭建个人博客并部署到github/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://sanwcoder.github.io/2018/04/04/如何使用hexo搭建个人博客并部署到github/">评论</a>
-    
+</nav>
 
-        </footer>
-    </div>
+
     
 </article>
 
 
-
-    <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/03/30/test/">视频学习</a>
-        </h1>
     
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/03/30/test/">
-            <time datetime="2018-03-29T16:00:00.000Z" itemprop="datePublished">2018-03-30</time>
-        </a>
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/IOS/">IOS</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/视频/">视频</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-<div class="article-gallery">
+</section>
     
-    <a class="gallery-item" href="/gallery/视频录制.png" rel="gallery_cjfrwvqvw0003yav5nky0g9bd">
-        <img src="/gallery/视频录制.png" itemprop="image" />
-    </a>
-    
-</div>
-
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>搜索 搜索是是是是宣传册想别带饭的风格让他 二人 额额的二房 二恶二二二 日润体乳润体乳内容让他让你人人人人人人人人偌大的的的别的的大幅度风热的的份儿的份儿儿耳朵版本二等分别带饭 的的地方地方地方地方地方的地方的的的的的的的打的  的的的的的的的的打的的的 的 d</p></p>
-            <p class="article-more-link">
-                <a href="/2018/03/30/test/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://sanwcoder.github.io/2018/03/30/test/" data-id="cjfrwvqvw0003yav5nky0g9bd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://sanwcoder.github.io/2018/03/30/test/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://sanwcoder.github.io/2018/03/30/test/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
 
 </section>
             
@@ -723,11 +518,13 @@
     <script>
     var disqus_config = function () {
         
-        this.page.identifier = '';
+            this.page.url = 'http://sanwcoder.github.io/2018/04/09/load跟initalize区别/';
+        
+        this.page.identifier = 'load跟initalize区别';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + '评论# enter disqus shortname here' + '.disqus.com/count.js';
+        s.src = '//' + '评论# enter disqus shortname here' + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
