@@ -23,7 +23,7 @@
                 <a href="<%- url_for(post.path) %>#more"><%= __('article.more') %></a>
             </p>
         <% } else { %>
-            <% if (!index && post.toc) { %>
+            <% if (!index && post.toc != false) { %>
                 <div id="toc" class="toc-article">
                 <strong class="toc-title"><%= __('article.catalogue') %></strong>
                     <%- toc(post.content) %>
@@ -38,7 +38,7 @@
         </footer>
     </div>
     <% if (!index) { %>
-        <%- partial('post/nav') %>
+        <%- partial('post/nav')%>
     <% } %>
 </article>
 
