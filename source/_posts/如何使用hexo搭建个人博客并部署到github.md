@@ -23,7 +23,7 @@ thumbnail:
 + 到[node.js官网](https://nodejs.org/en/)下载相应版本按照提示安装
 + 使用Homebrow安装
 
-```ruby
+```objc
 // 1. 安装HomeBrow
 ~ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 // 2. 安装node
@@ -36,11 +36,11 @@ thumbnail:
 ```
 #### 安装[Hexo](https://hexo.io/zh-cn/)
 
-```ruby
+```objc
 ~ npm install -g hexo-cli
 ```
 #### 安装git
-```
+```objc
 ~ brew install git
 ```
 #### 配置GitHub
@@ -48,7 +48,7 @@ thumbnail:
 ## 初步搭建&本地测试
 + 使用Hexo创建博客
 
-```
+```objc
 ~ hexo init <folder>
 ~ cd <folder>
 ~ npm install
@@ -56,7 +56,7 @@ thumbnail:
 ```
 + 创建完成后在相应的文件=夹中会有如下显示
 
-```
+```objc
 .
 ├── _config.yml  // 必要的配置文件，如博客名
 ├── package.json // 应用程序的信息
@@ -69,7 +69,7 @@ thumbnail:
 ```
 + 本地测试
 
-```
+```objc
 // 清除缓存文件
 ~ hexo clean 
 // 生成静态文件
@@ -81,12 +81,12 @@ thumbnail:
 ## 自定义（以[Icarus](https://github.com/ppoffice/hexo-theme-icarus.git)主题为例）
 + 下载相应的主题[主题](https://hexo.io/themes/)
 
-```
+```objc
 ~ git clone https://github.com/ppoffice/hexo-theme-icarus.git
 ```
 + 配置_config.yml
 
-```
+```objc
 title: SanW // 标题
 subtitle:  // 福标题
 description: // 描述
@@ -106,10 +106,9 @@ deploy:
   repo: // 仓库的完整地址，在部署时会部署到git库的master分支上
 
 ```
-+ 更改相应主题的_config.yml
++ 在/themes/icarus/_config.yml位置下更改相应主题的_config.yml
  
-```ruby
-# Menus
+```objc
 // 菜单栏
 menu:
   Home: .
@@ -146,10 +145,29 @@ customize:
 ~ hexo clean 
 // 生成文件
 ~ hexo g
-// 部署
+// 部署到GitHub
 ~ hexo d
 ```
-+ 访问https://GitHub名.github.io
++ 访问https://GitHub名.github.io  
+
+## 添加搜索
++ 在/themes/icarus/_config.yml中打开搜索
+
+```objc
+insight: true // 打开内部搜索
+```
++ 安装内部搜索支持
+
+```objc
+~ npm install -S hexo-generator-json-content
+```
++ 重新部署/ 启动服务  
+ 
+## 技巧
+部署到github以后hexo只是把相应生成blog的静态文件上传到了相应分支上而非源文件，我们要在其他电脑重新部署时无法使用源文件解决这个问题可以从两方面：
+
++ 新建一个git仓库存放源文件
++ 在当前仓库创建一个新分支存放源文件
 
 ## 未完待续...
 
