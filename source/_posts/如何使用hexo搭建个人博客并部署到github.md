@@ -19,7 +19,7 @@ thumbnail:
 
 ## 安装&搭建
 
-#### 安装Node.js
+### 安装Node.js
 + 到[node.js官网](https://nodejs.org/en/)下载相应版本按照提示安装
 + 使用Homebrow安装
 
@@ -34,17 +34,18 @@ thumbnail:
 // 3.2 查看npm版本
 ~ npm -version
 ```
-#### 安装[Hexo](https://hexo.io/zh-cn/)
+### 安装[Hexo](https://hexo.io/zh-cn/)
 
 ```objc
 ~ npm install -g hexo-cli
 ```
-#### 安装git
+### 安装git
 ```objc
 ~ brew install git
 ```
-#### 配置GitHub
-在你的Github下创建新仓库并将仓库名命名为 **GitHub名.github.io**这样命名后GitHub会自动 启用 GitHub Pages并将你的博客地址设置为 **https://GitHub名.github.io/**
+### 配置GitHub
+在你的Github下创建新仓库并将仓库名命名为 **GitHub名.github.io**这样命名后GitHub会自动 启用 GitHub Pages并将你的博客地址设置为 **https://GitHub名.github.io/**  
+
 ## 初步搭建&本地测试
 + 使用Hexo创建博客
 
@@ -168,6 +169,58 @@ insight: true // 打开内部搜索
 
 + 新建一个git仓库存放源文件
 + 在当前仓库创建一个新分支存放源文件
+
+## 自定义
+### 添加目录
++ icarus文章目录默认是关闭的，打开themes/icarus/layout/common/article.ejs修改判断post.toc != false
+
+```objc
+<% if (!index && post.toc != false) { %>
+                <div id="toc" class="toc-article">
+                <strong class="toc-title"><%= __('article.catalogue') %></strong>
+                    <%- toc(post.content) %>
+                </div>
+            <% } %>
+            <%- post.content %>
+        <% } %>
+```
++ 修改目录样式，打开themes/icarus/source/css/_partial/archive.styl在底部加入以下代码
+
+```objc
+
+/*toc*/
+.toc-article
+  background #eee
+  border 1px solid #bbb
+  border-radius 10px
+  margin 1.5em 0 0.3em 1.5em
+  padding 1.2em 1em 0 1em
+  max-width 50% /// 占据的最大宽度
+.toc-title
+  font-size 120%
+#toc
+  line-height 1em
+  font-size 0.9em
+  float top /// 悬浮的位置是 top/left/right
+  .toc
+    padding 0
+    margin 1em
+    line-height 1.8em
+    li
+      list-style-type none
+  .toc-child
+   margin-top 1em
+
+```
+### 修改代码块风格
+
+在theme/_config.yml下修改highlight,支持的样式在icarus/source/css/_highlight文件夹下
+
+```objc
+
+highlight: tomorrow-night  # icarus/source/css/_highlight
+
+```
 
 ## 未完待续...
 
