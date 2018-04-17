@@ -153,11 +153,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                15
+                17
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                16
+                18
                 <span>标签</span>
             </div>
         </div>
@@ -194,6 +194,274 @@
 
             
             <section id="main">
+    <article id="post-创建静态库" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/04/16/创建静态库/">创建静态库</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/04/16/创建静态库/">
+            <time datetime="2018-04-16T14:26:46.000Z" itemprop="datePublished">2018-04-16</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/iOS/">iOS</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/a/">.a</a>, <a class="tag-link" href="/tags/frmamework/">.frmamework</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>创建静态库的方式有两种，分别为.a跟.framework。</p></p>
+            <p class="article-more-link">
+                <a href="/2018/04/16/创建静态库/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://sanwcoder.github.io/2018/04/16/创建静态库/" data-id="cjg38gbtu000sq7v53agiel9i" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://sanwcoder.github.io/2018/04/16/创建静态库/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://sanwcoder.github.io/2018/04/16/创建静态库/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+
+    <article id="post-音视频拼接" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/04/16/音视频拼接/">音视频拼接</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/04/16/音视频拼接/">
+            <time datetime="2018-04-16T09:10:50.000Z" itemprop="datePublished">2018-04-16</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/iOS/">iOS</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/音视频/">音视频</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>在做音视频相关开发时会用到音视频拼接</p></p>
+            <p class="article-more-link">
+                <a href="/2018/04/16/音视频拼接/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://sanwcoder.github.io/2018/04/16/音视频拼接/" data-id="cjg38gbu2001aq7v5gtn7k39u" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://sanwcoder.github.io/2018/04/16/音视频拼接/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://sanwcoder.github.io/2018/04/16/音视频拼接/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+
     <article id="post-音视频录制" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -236,7 +504,7 @@
         
 <div class="article-gallery">
     
-    <a class="gallery-item" href="/gallery/视频录制.png" rel="gallery_cjftippbh0016htv5wvalaqsd">
+    <a class="gallery-item" href="/gallery/视频录制.png" rel="gallery_cjg38gbu3001cq7v58sd6huap">
         <img src="/gallery/视频录制.png" itemprop="image" />
     </a>
     
@@ -257,7 +525,7 @@
 
 </div>
 
-    <a data-url="http://sanwcoder.github.io/2018/04/10/音视频录制/" data-id="cjftippbh0016htv5wvalaqsd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://sanwcoder.github.io/2018/04/10/音视频录制/" data-id="cjg38gbu3001cq7v58sd6huap" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -391,7 +659,7 @@
 
 </div>
 
-    <a data-url="http://sanwcoder.github.io/2018/04/10/Swift-perfect开发抓取程序/" data-id="cjftippa10000htv55jyno6wk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://sanwcoder.github.io/2018/04/10/Swift-perfect开发抓取程序/" data-id="cjg38gbt70003q7v55gxnfkmg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -525,7 +793,7 @@
 
 </div>
 
-    <a data-url="http://sanwcoder.github.io/2018/04/10/CocosPod相关操作/" data-id="cjftippa60002htv51gx9ndsd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://sanwcoder.github.io/2018/04/10/CocosPod相关操作/" data-id="cjg38gbt20001q7v5pnc3khxu" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -659,7 +927,7 @@
 
 </div>
 
-    <a data-url="http://sanwcoder.github.io/2018/04/10/Swift-perfect服务端开发/" data-id="cjftippbl001ghtv5emsxa909" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://sanwcoder.github.io/2018/04/10/Swift-perfect服务端开发/" data-id="cjg38gbtc0007q7v57c61lhda" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -793,7 +1061,7 @@
 
 </div>
 
-    <a data-url="http://sanwcoder.github.io/2018/04/10/Swift和OC混编/" data-id="cjftippbd000zhtv5qjwm3jwn" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://sanwcoder.github.io/2018/04/10/Swift和OC混编/" data-id="cjg38gbte0009q7v5iyc048uc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -927,7 +1195,7 @@
 
 </div>
 
-    <a data-url="http://sanwcoder.github.io/2018/04/10/应用内切换系统语言/" data-id="cjftippbe0012htv5llupcg33" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://sanwcoder.github.io/2018/04/10/应用内切换系统语言/" data-id="cjg38gbty0013q7v52u3ijc9s" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1051,7 +1319,7 @@
 
 </div>
 
-    <a data-url="http://sanwcoder.github.io/2018/04/10/如何在AppStore下载国外软件/" data-id="cjftippbk001dhtv55ec37pmk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://sanwcoder.github.io/2018/04/10/如何在AppStore下载国外软件/" data-id="cjg38gbtx000zq7v50zy71q73" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1175,7 +1443,7 @@
 
 </div>
 
-    <a data-url="http://sanwcoder.github.io/2018/04/10/UUID解决方案/" data-id="cjftippbf0013htv5bxj3tvjp" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://sanwcoder.github.io/2018/04/10/UUID解决方案/" data-id="cjg38gbth000bq7v5d2zu1a6c" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1254,282 +1522,6 @@
 
 
 
-    <article id="post-收到推送时程序内的处理方案" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/04/10/收到推送时程序内的处理方案/">收到推送时程序内的处理方案</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/04/10/收到推送时程序内的处理方案/">
-            <time datetime="2018-04-10T04:27:17.000Z" itemprop="datePublished">2018-04-10</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/iOS/">iOS</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/iOS/">iOS</a>, <a class="tag-link" href="/tags/推送/">推送</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>在应用中经常会添加推送，在我们的项目中也用到了推送，推送添加的是友盟的第三方推送方案，接入友盟的SDK只要按照步骤，接进来也十分简单，完全可以收到推送数据，但问题是在收到推送数据时如何去处理收到的信息以及如何跳转相应的界面？这是我这篇文章主要介绍的。</p></p>
-            <p class="article-more-link">
-                <a href="/2018/04/10/收到推送时程序内的处理方案/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://sanwcoder.github.io/2018/04/10/收到推送时程序内的处理方案/" data-id="cjftippbi0019htv52k7dq7u8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://sanwcoder.github.io/2018/04/10/收到推送时程序内的处理方案/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://sanwcoder.github.io/2018/04/10/收到推送时程序内的处理方案/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-
-    <article id="post-iOS推送" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/04/10/iOS推送/">iOS推送</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/04/10/iOS推送/">
-            <time datetime="2018-04-10T04:15:57.000Z" itemprop="datePublished">2018-04-10</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/iOS/">iOS</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/iOS/">iOS</a>, <a class="tag-link" href="/tags/推送/">推送</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-<div class="article-gallery">
-    
-    <a class="gallery-item" href="/gallery/APNS.jpg" rel="gallery_cjftippb2000ohtv5dzmumxx5">
-        <img src="/gallery/APNS.jpg" itemprop="image" />
-    </a>
-    
-</div>
-
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>我们的产品是一款新闻类的APP要求按照用户行为推送相应的新闻数据，所以要用到推送，在程序启动的时候会请求用户是否打开推送，如果打开则能收到推送的新闻内容，相应的功能按钮也将打开，如果没有打开用户可以在更多设置里去手动打开，在我们的程序中并没有通过打开和关闭按钮去打开推送，而是让用户跳到系统的设置页面去自己选择是否打开。</p></p>
-            <p class="article-more-link">
-                <a href="/2018/04/10/iOS推送/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://sanwcoder.github.io/2018/04/10/iOS推送/" data-id="cjftippb2000ohtv5dzmumxx5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://sanwcoder.github.io/2018/04/10/iOS推送/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://sanwcoder.github.io/2018/04/10/iOS推送/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-
     <nav id="page-nav">
         <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
     </nav>
@@ -1543,6 +1535,44 @@
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/04/16/创建静态库/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+                            <p class="item-title"><a href="/2018/04/16/创建静态库/" class="title">创建静态库</a></p>
+                            <p class="item-date"><time datetime="2018-04-16T14:26:46.000Z" itemprop="datePublished">2018-04-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/04/16/音视频拼接/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+                            <p class="item-title"><a href="/2018/04/16/音视频拼接/" class="title">音视频拼接</a></p>
+                            <p class="item-date"><time datetime="2018-04-16T09:10:50.000Z" itemprop="datePublished">2018-04-16</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -1601,44 +1631,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/04/10/Swift-perfect服务端开发/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-                            <p class="item-title"><a href="/2018/04/10/Swift-perfect服务端开发/" class="title">Swift-perfect服务端开发</a></p>
-                            <p class="item-date"><time datetime="2018-04-10T06:13:58.000Z" itemprop="datePublished">2018-04-10</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/04/10/Swift和OC混编/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-                            <p class="item-title"><a href="/2018/04/10/Swift和OC混编/" class="title">Swift和OC混编</a></p>
-                            <p class="item-date"><time datetime="2018-04-10T06:05:43.000Z" itemprop="datePublished">2018-04-10</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1648,7 +1640,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/github/">github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">10</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/github/">github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">12</span></li></ul>
         </div>
     </div>
 
@@ -1657,7 +1649,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">15</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">17</span></li></ul>
         </div>
     </div>
 
@@ -1666,7 +1658,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-C/">Object-C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocospod/">cocospod</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-rule/">code rule</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/homebrow/">homebrow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/perfect/">perfect</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/国家化/">国家化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片滤镜/">图片滤镜</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/抓取/">抓取</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/推送/">推送</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音视频/">音视频</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/a/">.a</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frmamework/">.frmamework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-C/">Object-C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocospod/">cocospod</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-rule/">code rule</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/homebrow/">homebrow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/perfect/">perfect</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/国家化/">国家化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片滤镜/">图片滤镜</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/抓取/">抓取</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/推送/">推送</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音视频/">音视频</a><span class="tag-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -1675,7 +1667,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Object-C/" style="font-size: 15px;">Object-C</a> <a href="/tags/Swift/" style="font-size: 20px;">Swift</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/cocospod/" style="font-size: 10px;">cocospod</a> <a href="/tags/code-rule/" style="font-size: 10px;">code rule</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/github/" style="font-size: 15px;">github</a> <a href="/tags/homebrow/" style="font-size: 10px;">homebrow</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/perfect/" style="font-size: 15px;">perfect</a> <a href="/tags/国家化/" style="font-size: 10px;">国家化</a> <a href="/tags/图片滤镜/" style="font-size: 10px;">图片滤镜</a> <a href="/tags/抓取/" style="font-size: 10px;">抓取</a> <a href="/tags/推送/" style="font-size: 15px;">推送</a> <a href="/tags/音视频/" style="font-size: 10px;">音视频</a>
+            <a href="/tags/a/" style="font-size: 10px;">.a</a> <a href="/tags/frmamework/" style="font-size: 10px;">.frmamework</a> <a href="/tags/Object-C/" style="font-size: 15px;">Object-C</a> <a href="/tags/Swift/" style="font-size: 20px;">Swift</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/cocospod/" style="font-size: 10px;">cocospod</a> <a href="/tags/code-rule/" style="font-size: 10px;">code rule</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/github/" style="font-size: 15px;">github</a> <a href="/tags/homebrow/" style="font-size: 10px;">homebrow</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/perfect/" style="font-size: 15px;">perfect</a> <a href="/tags/国家化/" style="font-size: 10px;">国家化</a> <a href="/tags/图片滤镜/" style="font-size: 10px;">图片滤镜</a> <a href="/tags/抓取/" style="font-size: 10px;">抓取</a> <a href="/tags/推送/" style="font-size: 15px;">推送</a> <a href="/tags/音视频/" style="font-size: 15px;">音视频</a>
         </div>
     </div>
 
