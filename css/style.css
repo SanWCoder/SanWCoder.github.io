@@ -1540,6 +1540,33 @@ a.article-title:hover {
   color: #565a5f;
   font-weight: bold;
 }
+.toc-article {
+  background: #eee;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  margin: 1.5em 0 0.3em 1.5em;
+  padding: 1.2em 1em 0 1em;
+  max-width: 50%;
+}
+.toc-title {
+  font-size: 120%;
+}
+#toc {
+  line-height: 1em;
+  font-size: 0.9em;
+  float: top;
+}
+#toc .toc {
+  padding: 0;
+  margin: 1em;
+  line-height: 1.8em;
+}
+#toc .toc li {
+  list-style-type: none;
+}
+#toc .toc-child {
+  margin-top: 1em;
+}
 .timeline-wrap {
   margin: 40px 20px 40px 40px;
   border-left: 3px solid #eceff2;
@@ -2078,72 +2105,49 @@ a.article-title:hover {
   height: 1.6em;
 }
 .highlight {
-  color: #333;
-  background: #f8f8f8;
+  color: #c5c8c6;
+  background: #1d1f21;
 }
 .highlight .code .comment,
 .highlight .code .quote {
-  color: #998;
-  font-style: italic;
+  color: #969896;
 }
-.highlight .code .keyword,
-.highlight .code .selector-tag,
-.highlight .code .subst {
-  color: #333;
-  font-weight: bold;
-}
-.highlight .code .number,
-.highlight .code .literal,
 .highlight .code .variable,
 .highlight .code .template-variable,
-.highlight .code .tag .attr {
-  color: #008080;
-}
-.highlight .code .string,
-.highlight .code .doctag {
-  color: #d14;
-}
-.highlight .code .title,
-.highlight .code .section,
-.highlight .code .selector-id {
-  color: #900;
-  font-weight: bold;
-}
-.highlight .code .subst {
-  font-weight: normal;
-}
-.highlight .code .type,
-.highlight .code .class .title {
-  color: #458;
-  font-weight: bold;
-}
 .highlight .code .tag,
 .highlight .code .name,
-.highlight .code .attribute {
-  color: #000080;
-  font-weight: normal;
-}
+.highlight .code .selector-id,
+.highlight .code .selector-class,
 .highlight .code .regexp,
-.highlight .code .link {
-  color: #009926;
-}
-.highlight .code .symbol,
-.highlight .code .bullet {
-  color: #990073;
-}
-.highlight .code .built_in,
-.highlight .code .builtin-name {
-  color: #0086b3;
-}
-.highlight .code .meta {
-  color: #999;
-  font-weight: bold;
-}
 .highlight .code .deletion {
-  background: #fdd;
+  color: #c66;
 }
+.highlight .code .number,
+.highlight .code .built_in,
+.highlight .code .builtin-name,
+.highlight .code .literal,
+.highlight .code .type,
+.highlight .code .params,
+.highlight .code .meta,
+.highlight .code .link {
+  color: #de935f;
+}
+.highlight .code .attribute {
+  color: #f0c674;
+}
+.highlight .code .string,
+.highlight .code .symbol,
+.highlight .code .bullet,
 .highlight .code .addition {
-  background: #dfd;
+  color: #b5bd68;
+}
+.highlight .code .title,
+.highlight .code .section {
+  color: #81a2be;
+}
+.highlight .code .keyword,
+.highlight .code .selector-tag {
+  color: #b294bb;
 }
 .highlight .code .emphasis {
   font-style: italic;
