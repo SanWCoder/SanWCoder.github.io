@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>创建静态库 | SanW</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="创建静态库的方式有两种，分别为.a跟.framework。">
+<meta name="keywords" content=".a,.frmamework">
+<meta property="og:type" content="article">
+<meta property="og:title" content="创建静态库">
+<meta property="og:url" content="http://sanwcoder.github.io/2018/04/16/创建静态库/index.html">
+<meta property="og:site_name" content="SanW">
+<meta property="og:description" content="创建静态库的方式有两种，分别为.a跟.framework。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://sanwcoder.github.io/gallery/静态库-001.png">
+<meta property="og:image" content="http://sanwcoder.github.io/gallery/静态库-002.png">
+<meta property="og:image" content="http://sanwcoder.github.io/gallery/静态库-003.png">
+<meta property="og:image" content="http://sanwcoder.github.io/gallery/静态库-004.png">
+<meta property="og:image" content="http://sanwcoder.github.io/gallery/静态库-005.png">
+<meta property="og:image" content="http://sanwcoder.github.io/gallery/静态库-008.png">
+<meta property="og:image" content="http://sanwcoder.github.io/gallery/静态库-006.png">
+<meta property="og:image" content="http://sanwcoder.github.io/gallery/静态库-007.png">
+<meta property="og:image" content="http://sanwcoder.github.io/gallery/静态库-009.png">
+<meta property="og:image" content="http://sanwcoder.github.io/gallery/静态库-010.png">
+<meta property="og:image" content="http://sanwcoder.github.io/gallery/静态库-011.png">
+<meta property="og:updated_time" content="2018-04-17T09:12:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="创建静态库">
+<meta name="twitter:description" content="创建静态库的方式有两种，分别为.a跟.framework。">
+<meta name="twitter:image" content="http://sanwcoder.github.io/gallery/静态库-001.png">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">SanW</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/icon.jpg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/icon.jpg" />
+            <h2 id="name">SanWCoder</h2>
+            <h3 id="title">No pains,no gains</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>FengTai, China</span>
+            <a id="follow" target="_blank" href="https://github.com/SanWCoder">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                17
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                18
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/SanWCoder" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://weibo.com/u/5183294748" target="_blank" title="Weibo" class=tooltip>
+                            <i class="fa fa-Weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/mail_sanw@163.com" target="_blank" title="email" class=tooltip>
+                            <i class="fa fa-email"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-创建静态库" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            创建静态库
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/04/16/创建静态库/">
+            <time datetime="2018-04-16T14:26:46.000Z" itemprop="datePublished">2018-04-16</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/iOS/">iOS</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/a/">.a</a>, <a class="tag-link" href="/tags/frmamework/">.frmamework</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-framework"><span class="toc-number">1.</span> <span class="toc-text">创建.framework</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新建Xcode项目选择-Cocoa-Touch-Framework"><span class="toc-number">1.1.</span> <span class="toc-text">新建Xcode项目选择 Cocoa Touch Framework</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新建一个测试类"><span class="toc-number">1.2.</span> <span class="toc-text">新建一个测试类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置headers-在Build-Phases-gt-Headers下将Project下的你要提供给外部调用的头文件拖到Public下"><span class="toc-number">1.3.</span> <span class="toc-text">配置headers-在Build Phases -&gt; Headers下将Project下的你要提供给外部调用的头文件拖到Public下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在target-gt-build-setting-gt-link下修改基本配置"><span class="toc-number">1.4.</span> <span class="toc-text">在target-&gt; build setting - &gt; link下修改基本配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将静态库导入项目中确保已经导入"><span class="toc-number">1.5.</span> <span class="toc-text">将静态库导入项目中确保已经导入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-a"><span class="toc-number">2.</span> <span class="toc-text">创建.a</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新建Xcode项目选择-Cocoa-Touch-Static-Library"><span class="toc-number">2.1.</span> <span class="toc-text">新建Xcode项目选择 Cocoa Touch Static Library</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新建一个测试类-1"><span class="toc-number">2.2.</span> <span class="toc-text">新建一个测试类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置headers-在Build-Phases-gt-Copy-Files下将你要提供给外部调用的头文件添加进来"><span class="toc-number">2.3.</span> <span class="toc-text">配置headers-在Build Phases -&gt; Copy Files下将你要提供给外部调用的头文件添加进来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在target-gt-build-setting-gt-link下将Build-Active-Architecture-Only设置为NO"><span class="toc-number">2.4.</span> <span class="toc-text">在target-&gt; build setting - &gt; link下将Build Active Architecture Only设置为NO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#切换scame在run-时为release，然后CMD-B编译项目"><span class="toc-number">2.5.</span> <span class="toc-text">切换scame在run 时为release，然后CMD+B编译项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译以后会在Xcode左侧Products文件夹下会生成-a文件，之后show-in-find，将-a文件佶include下的-h文件一起倒入项目"><span class="toc-number">2.6.</span> <span class="toc-text">编译以后会在Xcode左侧Products文件夹下会生成.a文件，之后show in find，将.a文件佶include下的.h文件一起倒入项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将静态库导入项目中确保已经导入-1"><span class="toc-number">2.7.</span> <span class="toc-text">将静态库导入项目中确保已经导入</span></a></li></ol></li></ol>
+                </div>
+            
+            <p>创建静态库的方式有两种，分别为.a跟.framework。</p>
+<a id="more"></a>
+<h2 id="创建-framework"><a href="#创建-framework" class="headerlink" title="创建.framework"></a>创建.framework</h2><h3 id="新建Xcode项目选择-Cocoa-Touch-Framework"><a href="#新建Xcode项目选择-Cocoa-Touch-Framework" class="headerlink" title="新建Xcode项目选择 Cocoa Touch Framework"></a>新建Xcode项目选择 Cocoa Touch Framework</h3><p><img src="/gallery/静态库-001.png" alt="Cocoa Touch Framework"></p>
+<h3 id="新建一个测试类"><a href="#新建一个测试类" class="headerlink" title="新建一个测试类"></a>新建一个测试类</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Test.h</span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Test</span> : <span class="title">NSObject</span></span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  输出字符串</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">+ (<span class="keyword">void</span>)string;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Test.m</span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Test.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Test</span></span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> 输出字符串</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">+ (<span class="keyword">void</span>)string&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"framework test"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<h3 id="配置headers-在Build-Phases-gt-Headers下将Project下的你要提供给外部调用的头文件拖到Public下"><a href="#配置headers-在Build-Phases-gt-Headers下将Project下的你要提供给外部调用的头文件拖到Public下" class="headerlink" title="配置headers-在Build Phases -&gt; Headers下将Project下的你要提供给外部调用的头文件拖到Public下"></a>配置headers-在Build Phases -&gt; Headers下将Project下的你要提供给外部调用的头文件拖到Public下</h3><p><img src="/gallery/静态库-002.png" alt="Build Phases"></p>
+<h3 id="在target-gt-build-setting-gt-link下修改基本配置"><a href="#在target-gt-build-setting-gt-link下修改基本配置" class="headerlink" title="在target-&gt; build setting - &gt; link下修改基本配置"></a>在target-&gt; build setting - &gt; link下修改基本配置</h3><p><img src="/gallery/静态库-003.png" alt="Build Setting"></p>
+<blockquote>
+<p>1、首先是Dead Code Stripping设置为NO，网上对此项的解释如下，大致意思是如果开启此项就会对代码中的”dead”、”unreachable”的代码过滤，不过这个开关是否关闭，似乎没有多大影响，不过为了完整还原framework中的代码，将此项关闭也未曾不可。<br>2、然后将Link With Standard Libraries关闭，我想可能是为了避免重复链接<br>3、最后将Mach-O Type设为Static Library，framework可以是动态库也可以是静态库，对于系统的framework是动态库，而用户制作的framework只能是静态库。</p>
+</blockquote>
+<h3 id="将静态库导入项目中确保已经导入"><a href="#将静态库导入项目中确保已经导入" class="headerlink" title="将静态库导入项目中确保已经导入"></a>将静态库导入项目中确保已经导入</h3><p><img src="/gallery/静态库-004.png" alt="Build Setting"></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 导入头文件</span></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;FrameworkTest/FrameworkTest.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></span><br><span class="line">    [Test string];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="创建-a"><a href="#创建-a" class="headerlink" title="创建.a"></a>创建.a</h2><h3 id="新建Xcode项目选择-Cocoa-Touch-Static-Library"><a href="#新建Xcode项目选择-Cocoa-Touch-Static-Library" class="headerlink" title="新建Xcode项目选择 Cocoa Touch Static Library"></a>新建Xcode项目选择 Cocoa Touch Static Library</h3><p><img src="/gallery/静态库-005.png" alt="Cocoa Touch Static Library Framework"></p>
+<h3 id="新建一个测试类-1"><a href="#新建一个测试类-1" class="headerlink" title="新建一个测试类"></a>新建一个测试类</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Test.h</span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Test</span> : <span class="title">NSObject</span></span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  输出字符串</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">+ (<span class="keyword">void</span>)string;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Test.m</span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Test.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Test</span></span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> 输出字符串</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">+ (<span class="keyword">void</span>)string&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Cocoa Touch Static Library test"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<h3 id="配置headers-在Build-Phases-gt-Copy-Files下将你要提供给外部调用的头文件添加进来"><a href="#配置headers-在Build-Phases-gt-Copy-Files下将你要提供给外部调用的头文件添加进来" class="headerlink" title="配置headers-在Build Phases -&gt; Copy Files下将你要提供给外部调用的头文件添加进来"></a>配置headers-在Build Phases -&gt; Copy Files下将你要提供给外部调用的头文件添加进来</h3><p><img src="/gallery/静态库-008.png" alt="Build Phases"></p>
+<h3 id="在target-gt-build-setting-gt-link下将Build-Active-Architecture-Only设置为NO"><a href="#在target-gt-build-setting-gt-link下将Build-Active-Architecture-Only设置为NO" class="headerlink" title="在target-&gt; build setting - &gt; link下将Build Active Architecture Only设置为NO"></a>在target-&gt; build setting - &gt; link下将Build Active Architecture Only设置为NO</h3><p><img src="/gallery/静态库-006.png" alt="Build Active Architecture Only"></p>
+<blockquote>
+<pre><code>Build Active Architecture Only选项设置  Build Setting里面的Build Active Architecture Only设置为NO。Build Active Architecture Only设置为YES时，是为了debug的时候编译速度更快，此时它只编译当前的architecture版本。设置为NO时，会编译所有的版本。
+</code></pre></blockquote>
+<h3 id="切换scame在run-时为release，然后CMD-B编译项目"><a href="#切换scame在run-时为release，然后CMD-B编译项目" class="headerlink" title="切换scame在run 时为release，然后CMD+B编译项目"></a>切换scame在run 时为release，然后CMD+B编译项目</h3><p><img src="/gallery/静态库-007.png" alt="run"></p>
+<h3 id="编译以后会在Xcode左侧Products文件夹下会生成-a文件，之后show-in-find，将-a文件佶include下的-h文件一起倒入项目"><a href="#编译以后会在Xcode左侧Products文件夹下会生成-a文件，之后show-in-find，将-a文件佶include下的-h文件一起倒入项目" class="headerlink" title="编译以后会在Xcode左侧Products文件夹下会生成.a文件，之后show in find，将.a文件佶include下的.h文件一起倒入项目"></a>编译以后会在Xcode左侧Products文件夹下会生成.a文件，之后show in find，将.a文件佶include下的.h文件一起倒入项目</h3><p><img src="/gallery/静态库-009.png" alt=".a"></p>
+<p><img src="/gallery/静态库-010.png" alt=".a"></p>
+<h3 id="将静态库导入项目中确保已经导入-1"><a href="#将静态库导入项目中确保已经导入-1" class="headerlink" title="将静态库导入项目中确保已经导入"></a>将静态库导入项目中确保已经导入</h3><p><img src="/gallery/静态库-011.png" alt="Build Setting"></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 导入头文件</span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Test.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></span><br><span class="line">    [Test string];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://sanwcoder.github.io/2018/04/16/创建静态库/" data-id="cjg4htu6c000sycv54brhd67p" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://sanwcoder.github.io/2018/04/16/创建静态库/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://sanwcoder.github.io/2018/04/16/创建静态库/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/04/09/load跟initalize区别/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">load跟initalize区别</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/04/16/创建静态库/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+                            <p class="item-title"><a href="/2018/04/16/创建静态库/" class="title">创建静态库</a></p>
+                            <p class="item-date"><time datetime="2018-04-16T14:26:46.000Z" itemprop="datePublished">2018-04-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/04/09/load跟initalize区别/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/gallery/+load（）调用流程图.png)" alt="load跟initalize区别" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+                            <p class="item-title"><a href="/2018/04/09/load跟initalize区别/" class="title">load跟initalize区别</a></p>
+                            <p class="item-date"><time datetime="2018-04-09T03:43:42.000Z" itemprop="datePublished">2018-04-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/04/04/如何使用hexo搭建个人博客并部署到github/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/gallery/blog.png)" alt="如何使用hexo搭建个人博客并部署到github" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/blog/">blog</a></p>
+                            <p class="item-title"><a href="/2018/04/04/如何使用hexo搭建个人博客并部署到github/" class="title">如何使用hexo搭建个人博客并部署到github</a></p>
+                            <p class="item-date"><time datetime="2018-04-04T03:47:54.000Z" itemprop="datePublished">2018-04-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/10/Swift-perfect开发抓取程序/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+                            <p class="item-title"><a href="/2018/02/10/Swift-perfect开发抓取程序/" class="title">Swift-perfect开发抓取程序</a></p>
+                            <p class="item-date"><time datetime="2018-02-10T06:36:06.000Z" itemprop="datePublished">2018-02-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/10/Swift和OC混编/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+                            <p class="item-title"><a href="/2018/02/10/Swift和OC混编/" class="title">Swift和OC混编</a></p>
+                            <p class="item-date"><time datetime="2018-02-10T06:05:43.000Z" itemprop="datePublished">2018-02-10</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/github/">github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">12</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/a/">.a</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frmamework/">.frmamework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-C/">Object-C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocospod/">cocospod</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-rule/">code rule</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/homebrow/">homebrow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/perfect/">perfect</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/国际化/">国际化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片滤镜/">图片滤镜</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/抓取/">抓取</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/推送/">推送</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音视频/">音视频</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/a/" style="font-size: 10px;">.a</a> <a href="/tags/frmamework/" style="font-size: 10px;">.frmamework</a> <a href="/tags/Object-C/" style="font-size: 15px;">Object-C</a> <a href="/tags/Swift/" style="font-size: 20px;">Swift</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/cocospod/" style="font-size: 10px;">cocospod</a> <a href="/tags/code-rule/" style="font-size: 10px;">code rule</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/github/" style="font-size: 15px;">github</a> <a href="/tags/homebrow/" style="font-size: 10px;">homebrow</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/perfect/" style="font-size: 15px;">perfect</a> <a href="/tags/国际化/" style="font-size: 10px;">国际化</a> <a href="/tags/图片滤镜/" style="font-size: 10px;">图片滤镜</a> <a href="/tags/抓取/" style="font-size: 10px;">抓取</a> <a href="/tags/推送/" style="font-size: 15px;">推送</a> <a href="/tags/音视频/" style="font-size: 15px;">音视频</a>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 SanWCoder<br>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://sanwcoder.github.io/2018/04/16/创建静态库/';
+        
+        this.page.identifier = '创建静态库';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '评论# enter disqus shortname here' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
