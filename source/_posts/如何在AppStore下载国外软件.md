@@ -1,7 +1,7 @@
 ---
 title: 如何在AppStore下载国外软件(多图慎点）
 comments: true
-date: 2018-04-10 13:47:21
+date: 2016-06-10 13:47:21
 tags:
 categories:
 photos:

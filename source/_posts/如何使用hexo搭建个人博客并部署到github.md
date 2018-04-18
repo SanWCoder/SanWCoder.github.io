@@ -8,9 +8,9 @@ tags:
 categories:
  - blog
 photos:
- - /gallery/blog.jpeg
+ - /gallery/blog.png
 thumbnail:
- - /gallery/blog.jpeg
+ - /gallery/blog.png
 ---
 
 使用Hexo搭建个人博客

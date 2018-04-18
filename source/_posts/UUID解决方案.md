@@ -1,7 +1,7 @@
 ---
 title: UUID解决方案
 comments: true
-date: 2018-04-10 13:31:47
+date: 2016-06-12 13:31:47
 tags:
 categories:
 photos:
