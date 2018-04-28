@@ -12,19 +12,20 @@ photos:
 thumbnail:
 ---
 
-Swift-perfect开发抓取程序
+使用Swift-perfect开发一个网站抓取程序
 
 <!-- more -->
 
-## 创建基本程序
 
-#### 创建文件夹并进入
+## 创建新文件夹并进入
 
 ```objc
 ~ mkdir Literary_Crawler
 ~ cd Literary_Crawler
 ```
-#### 创建Package.swift这个文件是SPM（Swift软件包管理器）编译项目时必须要用到的文件
+## 创建Package.swift文件
+
+这个文件是SPM（Swift软件包管理器）编译项目时必须要用到的文件
 
 ```objc
 // 创建Package.swift 
@@ -42,7 +43,7 @@ let package = Package(
     ]
 )
 ```
-#### 创建Sources文件夹保存源程序及其main.swift
+## 创建Sources文件夹保存源程序及其main.swift
 
 ```objc
 ~ mkdir Sources
@@ -122,7 +123,7 @@ do {
 }
 
 ```
-#### 生成xcodeproj
+## 生成xcodeproj
 
  ```objc
 "__TFE10FoundationSSCuRxs8SequenceWx8Iterator7Element_zVs5UInt8rfT5bytesx8encodingVES_SS8Encoding_GSqSS_", referenced from:

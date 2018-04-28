@@ -14,7 +14,7 @@ git是一种分子式版本管理工具，git的操作有许多可视化工具�
 
 <!-- more -->
 
-### 一.代码提交规范
+## 代码提交规范
 
 ```objc
 eg:  
@@ -25,7 +25,7 @@ eg:
 <footer>
 
 ```
-##### 1> **type** 用于说明 commit 的类别，只允许使用下面7个标识。  
+### **type** 用于说明 commit 的类别，只允许使用下面7个标识。  
 * *docs*: 仅文档更改
 * *feat*: 一个新功能
 * *fix*: 修复错误
@@ -35,8 +35,8 @@ eg:
 * *test*: 添加缺失测试或更正现有测试
 * *chore*: 改变构建流程、或者增加依赖库、工具等  
 
-##### 2> **scope** 用于说明 commit 影响的范围，比如数据层、控制层、视图层等等，视项目不同而不同。
-##### 3> **subject**是 commit 目的的简短描述，不超过50个字符。
+### **scope** 用于说明 commit 影响的范围，比如数据层、控制层、视图层等等，视项目不同而不同。
+### **subject**是 commit 目的的简短描述，不超过50个字符。
 
 ```objc
 eg：
@@ -44,9 +44,9 @@ feat: all middleware support async function and common function
 feat: all middleware support async function and common function
 docs: add quickstart.md
 ```
-### 二.Git终端基本操作
+## Git终端基本操作
 
-##### 1> 操作流程
+### 操作流程
 
 ```objc
 // 创建本地仓库并和远程仓库关联
@@ -89,7 +89,7 @@ git remote -v
 
 ```
 
-##### 2>.基本操作
+### 基本操作
 
 ```objc
 // 1. 查看目前代码的修改状态:

@@ -15,7 +15,8 @@ thumbnail:
 <!-- more -->
 
 
-#### 1> 配置SSH通道
+##  配置SSH通道
+
 * 查看是否存在隐藏文件.ssh  如果存在删除文件夹重新生成key
 
  `/Users/《#用户名#>/.ssh/id_rsa`  
@@ -36,7 +37,7 @@ pbcopy < ~/.ssh/id_rsa.pub // 复制生成的key
 ssh -T git@github.com  // 执行完这条指令之后会输出  Are you sure you want to continue connecting (yes/no)?  输入 yes 回车
 回到github，刷新网页就可以看到钥匙旁的灰色小圆点变绿，就表明已经添加成功了。
 ```
-#### 2> 本地创建本地git库
+##  本地创建本地git库
 
 ```objc
 mkdir LiteraryHeaven<#git文件夹名称#> // 创建git文件夹
@@ -46,10 +47,12 @@ git status // 查看本地变了的文件，需要添加的问红色，需要提
 git add a.tex<#要添加到git本地库的文件名称#> // 或者使用 git add . 添加所有修改文件，
 git commit -m"提交日志"
 ```
-#### 3> 创建远程git库
+##  创建远程git库
+
 * 进入GitHub，创建一个远程库
 * 进入新建的远程库以SSH方式查看远程库地址，进行复制
-#### 4> 关联本地库和远程库
+
+## 关联本地库和远程库
 
 ```objc
 // 1.关联远程库
@@ -65,5 +68,5 @@ git branch -a // 查看远程和本地所有分支
 git pull origin master // 拉取远程库到本地库
 git push origin :<#branchName#>[分支名] // 推送本地分支到远程分支
 ```
-#### 5> 其他相关git操作请转至[git终端操作语法](/_posts/git终端操作语法)
+## 其他相关git操作请转至[git终端操作语法](/_posts/git终端操作语法)
 

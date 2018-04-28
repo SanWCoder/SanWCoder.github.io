@@ -15,18 +15,19 @@ thumbnail:
 
 
 
-## 具体解决方案
+## 简介
+
 参考来源 http://www.tuicool.com/articles/Ir63UbI
 
 UUID解决方案主要采用了keychain存储的解决方案，我们知道如果使用NSUserDefaults来存储的话当卸载以后数据也将会一并删除，目前最好的解决方案就是使用keychain存储。
 
-1. 创建keychain
+## 创建keychain
 
 ![创建keychain流程](/gallery/UUID-001.png)
 创建完以后会自动生成一个entitlements文件  
 ![生成的entitlements文件](/gallery/UUID-002.png)
 
-2. 主要代码，自定义一个存储类
+## 自定义存储类
 
 ```objc
   #import "INKeyChainStore.h"
@@ -77,7 +78,7 @@ UUID解决方案主要采用了keychain存储的解决方案，我们知道如�
 @end
 ```
 
-3. 自定义一个类来获取UUID
+## 自定义一个类来获取UUID
 
 ```objc
 //  获取设备UUID

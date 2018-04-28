@@ -14,13 +14,12 @@ thumbnail:
 
 <!-- more -->
 
-## cocospod 基本操作
 
-* 创建podfile文件  
+## 创建podfile文件  
 
   `pod init`
   
-* 安装第三方库  
+## 安装第三方库  
 
 ```objc
 // 在podfile中添加第三方库如
@@ -35,14 +34,15 @@ pod 'SVProgressHUD'
 end
 ```
 
-* 安装  
+## 安装  
 
 ```objc
+/// 此时会生成 .lock文件
 pod install
 ```
-* cocospod 更新
+## cocospod 更新
    
-1> 先切换gem源  
+### 先切换gem源  
 
 ```objc
 gem sources --remove https://rubygems.org/`
@@ -56,15 +56,15 @@ gem source -l
 
 就说明切换成功
 ```
-2>升级  
+### 升级  
 
 `sudo gem install -n /usr/local/bin cocoapods --pre`  
 
-3> 查看版本  
+### 查看版本  
 
 `pod --version`  
 
-4> 设置cocospod仓库  
+### 设置cocospod仓库  
 
 ```objc
 pod repo update
