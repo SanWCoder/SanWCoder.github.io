@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://sanwcoder.github.io/gallery/APNS-001.jpg">
 <meta property="og:image" content="http://sanwcoder.github.io/gallery/APNS-002.jpg">
 <meta property="og:image" content="http://sanwcoder.github.io/gallery/APNS-003.jpg">
-<meta property="og:updated_time" content="2018-04-18T02:19:36.000Z">
+<meta property="og:updated_time" content="2018-04-28T12:36:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="收到推送时程序内的处理方案">
 <meta name="twitter:description" content="在应用中经常会添加推送，在我们的项目中也用到了推送，推送添加的是友盟的第三方推送方案，接入友盟的SDK只要按照步骤，接进来也十分简单，完全可以收到推送数据，但问题是在收到推送数据时如何去处理收到的信息以及如何跳转相应的界面？这是我这篇文章主要介绍的。">
@@ -161,11 +161,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                17
+                18
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                18
+                19
                 <span>标签</span>
             </div>
         </div>
@@ -246,20 +246,14 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#解决思路"><span class="toc-number">1.</span> <span class="toc-text">解决思路</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#解决思路"><span class="toc-number">1.</span> <span class="toc-text">解决思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#当程序没有死掉即在在前台或者后台时"><span class="toc-number">2.</span> <span class="toc-text">当程序没有死掉即在在前台或者后台时</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#程序在运行在前台即处于UIApplicationStateActive状态"><span class="toc-number">2.1.</span> <span class="toc-text">程序在运行在前台即处于UIApplicationStateActive状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#程序在运行在后台但没死掉即处于UIApplicationStateInactive状态时"><span class="toc-number">2.2.</span> <span class="toc-text">程序在运行在后台但没死掉即处于UIApplicationStateInactive状态时</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#当程序完全死掉时"><span class="toc-number">3.</span> <span class="toc-text">当程序完全死掉时</span></a></li></ol>
                 </div>
             
             <p>在应用中经常会添加推送，在我们的项目中也用到了推送，推送添加的是友盟的第三方推送方案，接入友盟的SDK只要按照步骤，接进来也十分简单，完全可以收到推送数据，但问题是在收到推送数据时如何去处理收到的信息以及如何跳转相应的界面？这是我这篇文章主要介绍的。</p>
 <a id="more"></a>
 <h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p>iOS提供收到推送时的处理方法，但是收到推送应该从几个方面来考虑这才是关键的点，对于一个刚接触的人来说也是不知所措，之后再网上查找零零碎碎的找到了一些突破点，才完成了对于收到推送的处理方式，主要从以下两个方面来考虑。</p>
-<ol>
-<li>当程序没有死掉即在在前台或者后台时</li>
-</ol>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  收到推送时会在AppDelegate的didReceiveRemoteNotification中响应事件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">- (<span class="keyword">void</span>)application:(<span class="built_in">UIApplication</span> *)application didReceiveRemoteNotification:(<span class="built_in">NSDictionary</span> *)userInfo</span><br><span class="line">&#123;</span><br><span class="line">       <span class="comment">// 这里做收到推送时的处理userInfo为收到的数据</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>程序在运行在前台即处于UIApplicationStateActive状态</li>
-</ul>
-<p><img src="/gallery/APNS-001.jpg" alt="处于UIApplicationStateActive状态时的处理"></p>
+<h2 id="当程序没有死掉即在在前台或者后台时"><a href="#当程序没有死掉即在在前台或者后台时" class="headerlink" title="当程序没有死掉即在在前台或者后台时"></a>当程序没有死掉即在在前台或者后台时</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  收到推送时会在AppDelegate的didReceiveRemoteNotification中响应事件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">- (<span class="keyword">void</span>)application:(<span class="built_in">UIApplication</span> *)application didReceiveRemoteNotification:(<span class="built_in">NSDictionary</span> *)userInfo</span><br><span class="line">&#123;</span><br><span class="line">       <span class="comment">// 这里做收到推送时的处理userInfo为收到的数据</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="程序在运行在前台即处于UIApplicationStateActive状态"><a href="#程序在运行在前台即处于UIApplicationStateActive状态" class="headerlink" title="程序在运行在前台即处于UIApplicationStateActive状态"></a>程序在运行在前台即处于UIApplicationStateActive状态</h3><p><img src="/gallery/APNS-001.jpg" alt="处于UIApplicationStateActive状态时的处理"></p>
 <p>在UIApplicationStateActive时只需要定义一个alertView来处理，在代理方法里跳转相应的详情，当然这个跳转必须要有navigationController来跳转并且navigationController要作为一个属性。</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)application:(<span class="built_in">UIApplication</span> *)application didReceiveRemoteNotification:(<span class="built_in">NSDictionary</span> *)userInfo</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 保存推送数据</span></span><br><span class="line">     <span class="keyword">self</span>.userInfos = userInfo;</span><br><span class="line">      <span class="comment">// 定制自定义的弹框</span></span><br><span class="line">        <span class="keyword">if</span>([<span class="built_in">UIApplication</span> sharedApplication].applicationState == <span class="built_in">UIApplicationStateActive</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">UIAlertView</span> *alertView = [[<span class="built_in">UIAlertView</span> alloc] initWithTitle:<span class="string">@"有新的要闻推荐哦~"</span></span><br><span class="line">            message:userInfo[<span class="string">@"aps"</span>][<span class="string">@"alert"</span>]</span><br><span class="line">            delegate:<span class="keyword">self</span></span><br><span class="line">            cancelButtonTitle:<span class="string">@"取消"</span></span><br><span class="line">            otherButtonTitles:<span class="string">@"立即前往"</span>, <span class="literal">nil</span>];</span><br><span class="line">            [alertView show];</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// iOS 10 会走新 API, iOS 10 以前会走到老 API</span></span><br><span class="line"><span class="meta">#if __IPHONE_OS_VERSION_MAX_ALLOWED &gt;= __IPHONE_10_0</span></span><br><span class="line"><span class="comment">// App 用户点击通知的回调</span></span><br><span class="line"><span class="comment">// 无论本地推送还是远程推送都会走这个回调</span></span><br><span class="line">- (<span class="keyword">void</span>)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(<span class="keyword">void</span>(^)())completionHandler &#123;</span><br><span class="line">    </span><br><span class="line">    WELog(<span class="string">@"[XGDemo] click notification"</span>);</span><br><span class="line">    [XGPush handleReceiveNotification:response.notification.request.content.userInfo</span><br><span class="line">                      successCallback:^&#123;</span><br><span class="line">                          WELog(<span class="string">@"[XGDemo] Handle receive success"</span>);</span><br><span class="line">                      &#125; errorCallback:^&#123;</span><br><span class="line">                          WELog(<span class="string">@"[XGDemo] Handle receive error"</span>);</span><br><span class="line">                      &#125;];</span><br><span class="line">    <span class="comment">// 处理推送</span></span><br><span class="line">    [<span class="keyword">self</span> receivePushInfo:response.notification.request.content.userInfo];</span><br><span class="line">    completionHandler();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>// App 在前台弹通知需要调用这个接口</p>
@@ -278,16 +272,10 @@
 <ul>
 <li>(void)notificationDetailVc {<br>  INHelpProtrolViewController *help = [[INHelpProtrolViewController alloc]init];<br>  help.urlString = self.userInfos[@”src_link”];<br>  [self.mainNavigationController pushViewController:help animated:YES];<br>}</li>
 </ul>
-<ul>
-<li>程序在运行在后台但没死掉即处于UIApplicationStateInactive状态时</li>
-</ul>
-<p><img src="/gallery/APNS-002.jpg" alt="处于UIApplicationStateInactive状态时"></p>
+<h3 id="程序在运行在后台但没死掉即处于UIApplicationStateInactive状态时"><a href="#程序在运行在后台但没死掉即处于UIApplicationStateInactive状态时" class="headerlink" title="程序在运行在后台但没死掉即处于UIApplicationStateInactive状态时"></a>程序在运行在后台但没死掉即处于UIApplicationStateInactive状态时</h3><p><img src="/gallery/APNS-002.jpg" alt="处于UIApplicationStateInactive状态时"></p>
 <p>当你点击通知栏上的通知时程序程序会触发didReceiveRemoteNotification方法</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)application:(<span class="built_in">UIApplication</span> *)application didReceiveRemoteNotification:(<span class="built_in">NSDictionary</span> *)userInfo</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">if</span> ([<span class="built_in">UIApplication</span> sharedApplication].applicationState == <span class="built_in">UIApplicationStateInactive</span>)&#123;</span><br><span class="line">            <span class="comment">// 跳转详情页面</span></span><br><span class="line">                INHelpProtrolViewController *help = [[INHelpProtrolViewController alloc]init];</span><br><span class="line">    help.urlString = <span class="keyword">self</span>.userInfos[<span class="string">@"src_link"</span>];</span><br><span class="line">    [<span class="keyword">self</span>.mainNavigationController pushViewController:help animated:<span class="literal">YES</span>];</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>当程序完全死掉时</li>
-</ol>
-<p><img src="/gallery/APNS-003.jpg" alt="当程序完全死掉时"></p>
+<h2 id="当程序完全死掉时"><a href="#当程序完全死掉时" class="headerlink" title="当程序完全死掉时"></a>当程序完全死掉时</h2><p><img src="/gallery/APNS-003.jpg" alt="当程序完全死掉时"></p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 程序启动时</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="built_in">NSDictionary</span> *)launchOptions &#123;</span><br><span class="line"><span class="comment">/// 上面创建window，navgationController等操作，创建完成后判断是否是由推送打开之后跳转</span></span><br><span class="line"><span class="meta">#pragma mark -判断是否由推送打开</span></span><br><span class="line">    <span class="comment">// 判断是否是通过推送打开app</span></span><br><span class="line">    <span class="built_in">NSDictionary</span> *userInfos = [launchOptions objectForKey:<span class="built_in">UIApplicationLaunchOptionsRemoteNotificationKey</span>];</span><br><span class="line">    <span class="keyword">if</span> (userInfos) &#123;</span><br><span class="line">        <span class="comment">// 保存数据</span></span><br><span class="line">        <span class="keyword">self</span>.userInfos = userInfos;</span><br><span class="line">        <span class="comment">// 跳转详情</span></span><br><span class="line">           INHelpProtrolViewController *help = [[INHelpProtrolViewController alloc]init];</span><br><span class="line">    help.urlString = <span class="keyword">self</span>.userInfos[<span class="string">@"src_link"</span>];</span><br><span class="line">    [<span class="keyword">self</span>.mainNavigationController pushViewController:help animated:<span class="literal">YES</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         
@@ -299,7 +287,7 @@
 
 </div>
 
-    <a data-url="http://sanwcoder.github.io/2016/06/01/收到推送时程序内的处理方案/" data-id="cjg4htu6i0017ycv5e4dtfy9w" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://sanwcoder.github.io/2016/06/01/收到推送时程序内的处理方案/" data-id="cjgjdizz8001641v5olsltdml" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -422,6 +410,25 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/04/28/直播App-简介/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/直播/">直播</a></p>
+                            <p class="item-title"><a href="/2018/04/28/直播App-简介/" class="title">直播App-简介</a></p>
+                            <p class="item-date"><time datetime="2018-04-28T11:50:59.000Z" itemprop="datePublished">2018-04-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/04/16/创建静态库/" class="thumbnail">
     
     
@@ -495,25 +502,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/02/10/Swift和OC混编/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-                            <p class="item-title"><a href="/2018/02/10/Swift和OC混编/" class="title">Swift和OC混编</a></p>
-                            <p class="item-date"><time datetime="2018-02-10T06:05:43.000Z" itemprop="datePublished">2018-02-10</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -523,7 +511,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/github/">github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">12</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/github/">github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/直播/">直播</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -532,7 +520,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li></ul>
         </div>
     </div>
 
@@ -541,7 +529,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/a/">.a</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frmamework/">.frmamework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-C/">Object-C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocospod/">cocospod</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-rule/">code rule</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/homebrow/">homebrow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/perfect/">perfect</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/国际化/">国际化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片滤镜/">图片滤镜</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/抓取/">抓取</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/推送/">推送</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音视频/">音视频</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/a/">.a</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frmamework/">.frmamework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-C/">Object-C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocospod/">cocospod</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-rule/">code rule</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/homebrow/">homebrow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/perfect/">perfect</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/国际化/">国际化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片滤镜/">图片滤镜</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/抓取/">抓取</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/推送/">推送</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/直播/">直播</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音视频/">音视频</a><span class="tag-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -550,7 +538,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/a/" style="font-size: 10px;">.a</a> <a href="/tags/frmamework/" style="font-size: 10px;">.frmamework</a> <a href="/tags/Object-C/" style="font-size: 15px;">Object-C</a> <a href="/tags/Swift/" style="font-size: 20px;">Swift</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/cocospod/" style="font-size: 10px;">cocospod</a> <a href="/tags/code-rule/" style="font-size: 10px;">code rule</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/github/" style="font-size: 15px;">github</a> <a href="/tags/homebrow/" style="font-size: 10px;">homebrow</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/perfect/" style="font-size: 15px;">perfect</a> <a href="/tags/国际化/" style="font-size: 10px;">国际化</a> <a href="/tags/图片滤镜/" style="font-size: 10px;">图片滤镜</a> <a href="/tags/抓取/" style="font-size: 10px;">抓取</a> <a href="/tags/推送/" style="font-size: 15px;">推送</a> <a href="/tags/音视频/" style="font-size: 15px;">音视频</a>
+            <a href="/tags/a/" style="font-size: 10px;">.a</a> <a href="/tags/frmamework/" style="font-size: 10px;">.frmamework</a> <a href="/tags/Object-C/" style="font-size: 15px;">Object-C</a> <a href="/tags/Swift/" style="font-size: 20px;">Swift</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/cocospod/" style="font-size: 10px;">cocospod</a> <a href="/tags/code-rule/" style="font-size: 10px;">code rule</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/github/" style="font-size: 15px;">github</a> <a href="/tags/homebrow/" style="font-size: 10px;">homebrow</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/perfect/" style="font-size: 15px;">perfect</a> <a href="/tags/国际化/" style="font-size: 10px;">国际化</a> <a href="/tags/图片滤镜/" style="font-size: 10px;">图片滤镜</a> <a href="/tags/抓取/" style="font-size: 10px;">抓取</a> <a href="/tags/推送/" style="font-size: 15px;">推送</a> <a href="/tags/直播/" style="font-size: 10px;">直播</a> <a href="/tags/音视频/" style="font-size: 15px;">音视频</a>
         </div>
     </div>
 

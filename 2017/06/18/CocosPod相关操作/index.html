@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="SanW">
 <meta property="og:description" content="在项目中使用cocospod管理第三方库的一些基本操作">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-18T02:18:11.000Z">
+<meta property="og:updated_time" content="2018-04-28T12:29:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cocospod相关操作">
 <meta name="twitter:description" content="在项目中使用cocospod管理第三方库的一些基本操作">
@@ -157,11 +157,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                17
+                18
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                18
+                19
                 <span>标签</span>
             </div>
         </div>
@@ -242,34 +242,18 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#cocospod-基本操作"><span class="toc-number">1.</span> <span class="toc-text">cocospod 基本操作</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建podfile文件"><span class="toc-number">1.</span> <span class="toc-text">创建podfile文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装第三方库"><span class="toc-number">2.</span> <span class="toc-text">安装第三方库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">3.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cocospod-更新"><span class="toc-number">4.</span> <span class="toc-text">cocospod 更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#先切换gem源"><span class="toc-number">4.1.</span> <span class="toc-text">先切换gem源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#升级"><span class="toc-number">4.2.</span> <span class="toc-text">升级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看版本"><span class="toc-number">4.3.</span> <span class="toc-text">查看版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置cocospod仓库"><span class="toc-number">4.4.</span> <span class="toc-text">设置cocospod仓库</span></a></li></ol></li></ol>
                 </div>
             
             <p>在项目中使用cocospod管理第三方库的一些基本操作</p>
 <a id="more"></a>
-<h2 id="cocospod-基本操作"><a href="#cocospod-基本操作" class="headerlink" title="cocospod 基本操作"></a>cocospod 基本操作</h2><ul>
-<li><p>创建podfile文件  </p>
-<p><code>pod init</code></p>
-</li>
-<li><p>安装第三方库  </p>
-</li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在podfile中添加第三方库如</span></span><br><span class="line"><span class="meta"># Uncomment this line to define a global platform for your project</span></span><br><span class="line">platform :ios, '9.0'</span><br><span class="line">use_frameworks!</span><br><span class="line"></span><br><span class="line">target 'LiteraryHeaven' do</span><br><span class="line">pod 'SVProgressHUD'</span><br><span class="line"> pod 'Heimdall', '~&gt; 1.0.0'</span><br><span class="line"><span class="meta"># pod 'ReactiveCocoa','~&gt; 4.0.0'</span></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<ul>
-<li>安装  </li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod install</span><br></pre></td></tr></table></figure>
-<ul>
-<li>cocospod 更新</li>
-</ul>
-<p>1&gt; 先切换gem源  </p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gem sources --remove https:<span class="comment">//rubygems.org/`</span></span><br><span class="line">gem source -a https:<span class="comment">//gems.ruby-china.org  </span></span><br><span class="line"><span class="comment">// 查看是否切换成功</span></span><br><span class="line">gem source -l</span><br><span class="line"></span><br><span class="line">打印出*** CURRENT SOURCES ***</span><br><span class="line"></span><br><span class="line">           https:<span class="comment">//gems.ruby-china.org</span></span><br><span class="line"></span><br><span class="line">就说明切换成功</span><br></pre></td></tr></table></figure>
-<p>2&gt;升级  </p>
-<p><code>sudo gem install -n /usr/local/bin cocoapods --pre</code>  </p>
-<p>3&gt; 查看版本  </p>
-<p><code>pod --version</code>  </p>
-<p>4&gt; 设置cocospod仓库  </p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pod repo update</span><br><span class="line"><span class="comment">// pod setup</span></span><br></pre></td></tr></table></figure>
+<h2 id="创建podfile文件"><a href="#创建podfile文件" class="headerlink" title="创建podfile文件"></a>创建podfile文件</h2><p>  <code>pod init</code></p>
+<h2 id="安装第三方库"><a href="#安装第三方库" class="headerlink" title="安装第三方库"></a>安装第三方库</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在podfile中添加第三方库如</span></span><br><span class="line"><span class="meta"># Uncomment this line to define a global platform for your project</span></span><br><span class="line">platform :ios, '9.0'</span><br><span class="line">use_frameworks!</span><br><span class="line"></span><br><span class="line">target 'LiteraryHeaven' do</span><br><span class="line">pod 'SVProgressHUD'</span><br><span class="line"> pod 'Heimdall', '~&gt; 1.0.0'</span><br><span class="line"><span class="meta"># pod 'ReactiveCocoa','~&gt; 4.0.0'</span></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 此时会生成 .lock文件</span></span><br><span class="line">pod install</span><br></pre></td></tr></table></figure>
+<h2 id="cocospod-更新"><a href="#cocospod-更新" class="headerlink" title="cocospod 更新"></a>cocospod 更新</h2><h3 id="先切换gem源"><a href="#先切换gem源" class="headerlink" title="先切换gem源"></a>先切换gem源</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gem sources --remove https:<span class="comment">//rubygems.org/`</span></span><br><span class="line">gem source -a https:<span class="comment">//gems.ruby-china.org  </span></span><br><span class="line"><span class="comment">// 查看是否切换成功</span></span><br><span class="line">gem source -l</span><br><span class="line"></span><br><span class="line">打印出*** CURRENT SOURCES ***</span><br><span class="line"></span><br><span class="line">           https:<span class="comment">//gems.ruby-china.org</span></span><br><span class="line"></span><br><span class="line">就说明切换成功</span><br></pre></td></tr></table></figure>
+<h3 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h3><p><code>sudo gem install -n /usr/local/bin cocoapods --pre</code>  </p>
+<h3 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h3><p><code>pod --version</code>  </p>
+<h3 id="设置cocospod仓库"><a href="#设置cocospod仓库" class="headerlink" title="设置cocospod仓库"></a>设置cocospod仓库</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pod repo update</span><br><span class="line"><span class="comment">// pod setup</span></span><br></pre></td></tr></table></figure>
 
         
         </div>
@@ -280,7 +264,7 @@
 
 </div>
 
-    <a data-url="http://sanwcoder.github.io/2017/06/18/CocosPod相关操作/" data-id="cjg4htu5k0001ycv57ms4kc8c" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://sanwcoder.github.io/2017/06/18/CocosPod相关操作/" data-id="cjgjdizy7000141v507czzn9j" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -403,6 +387,25 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/04/28/直播App-简介/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/直播/">直播</a></p>
+                            <p class="item-title"><a href="/2018/04/28/直播App-简介/" class="title">直播App-简介</a></p>
+                            <p class="item-date"><time datetime="2018-04-28T11:50:59.000Z" itemprop="datePublished">2018-04-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/04/16/创建静态库/" class="thumbnail">
     
     
@@ -476,25 +479,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/02/10/Swift和OC混编/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-                            <p class="item-title"><a href="/2018/02/10/Swift和OC混编/" class="title">Swift和OC混编</a></p>
-                            <p class="item-date"><time datetime="2018-02-10T06:05:43.000Z" itemprop="datePublished">2018-02-10</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -504,7 +488,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/github/">github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">12</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/github/">github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/直播/">直播</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -513,7 +497,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li></ul>
         </div>
     </div>
 
@@ -522,7 +506,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/a/">.a</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frmamework/">.frmamework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-C/">Object-C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocospod/">cocospod</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-rule/">code rule</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/homebrow/">homebrow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/perfect/">perfect</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/国际化/">国际化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片滤镜/">图片滤镜</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/抓取/">抓取</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/推送/">推送</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音视频/">音视频</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/a/">.a</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frmamework/">.frmamework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-C/">Object-C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocospod/">cocospod</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-rule/">code rule</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/homebrow/">homebrow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/perfect/">perfect</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/国际化/">国际化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片滤镜/">图片滤镜</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/抓取/">抓取</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/推送/">推送</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/直播/">直播</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音视频/">音视频</a><span class="tag-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -531,7 +515,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/a/" style="font-size: 10px;">.a</a> <a href="/tags/frmamework/" style="font-size: 10px;">.frmamework</a> <a href="/tags/Object-C/" style="font-size: 15px;">Object-C</a> <a href="/tags/Swift/" style="font-size: 20px;">Swift</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/cocospod/" style="font-size: 10px;">cocospod</a> <a href="/tags/code-rule/" style="font-size: 10px;">code rule</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/github/" style="font-size: 15px;">github</a> <a href="/tags/homebrow/" style="font-size: 10px;">homebrow</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/perfect/" style="font-size: 15px;">perfect</a> <a href="/tags/国际化/" style="font-size: 10px;">国际化</a> <a href="/tags/图片滤镜/" style="font-size: 10px;">图片滤镜</a> <a href="/tags/抓取/" style="font-size: 10px;">抓取</a> <a href="/tags/推送/" style="font-size: 15px;">推送</a> <a href="/tags/音视频/" style="font-size: 15px;">音视频</a>
+            <a href="/tags/a/" style="font-size: 10px;">.a</a> <a href="/tags/frmamework/" style="font-size: 10px;">.frmamework</a> <a href="/tags/Object-C/" style="font-size: 15px;">Object-C</a> <a href="/tags/Swift/" style="font-size: 20px;">Swift</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/cocospod/" style="font-size: 10px;">cocospod</a> <a href="/tags/code-rule/" style="font-size: 10px;">code rule</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/github/" style="font-size: 15px;">github</a> <a href="/tags/homebrow/" style="font-size: 10px;">homebrow</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/perfect/" style="font-size: 15px;">perfect</a> <a href="/tags/国际化/" style="font-size: 10px;">国际化</a> <a href="/tags/图片滤镜/" style="font-size: 10px;">图片滤镜</a> <a href="/tags/抓取/" style="font-size: 10px;">抓取</a> <a href="/tags/推送/" style="font-size: 15px;">推送</a> <a href="/tags/直播/" style="font-size: 10px;">直播</a> <a href="/tags/音视频/" style="font-size: 15px;">音视频</a>
         </div>
     </div>
 

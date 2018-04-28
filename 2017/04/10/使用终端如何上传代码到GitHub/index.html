@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="SanW">
 <meta property="og:description" content="本篇文章简述下如何将新项目通过终端上传到github，并使用git进行版本开发">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-18T02:20:18.000Z">
+<meta property="og:updated_time" content="2018-04-28T12:30:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用终端如何上传代码到GitHub">
 <meta name="twitter:description" content="本篇文章简述下如何将新项目通过终端上传到github，并使用git进行版本开发">
@@ -157,11 +157,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                17
+                18
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                18
+                19
                 <span>标签</span>
             </div>
         </div>
@@ -242,11 +242,11 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-gt-配置SSH通道"><span class="toc-number">1.</span> <span class="toc-text">1&gt; 配置SSH通道</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-gt-本地创建本地git库"><span class="toc-number">2.</span> <span class="toc-text">2&gt; 本地创建本地git库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-gt-创建远程git库"><span class="toc-number">3.</span> <span class="toc-text">3&gt; 创建远程git库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-gt-关联本地库和远程库"><span class="toc-number">4.</span> <span class="toc-text">4&gt; 关联本地库和远程库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-gt-其他相关git操作请转至git终端操作语法"><span class="toc-number">5.</span> <span class="toc-text">5&gt; 其他相关git操作请转至git终端操作语法</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置SSH通道"><span class="toc-number">1.</span> <span class="toc-text">配置SSH通道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地创建本地git库"><span class="toc-number">2.</span> <span class="toc-text">本地创建本地git库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建远程git库"><span class="toc-number">3.</span> <span class="toc-text">创建远程git库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关联本地库和远程库"><span class="toc-number">4.</span> <span class="toc-text">关联本地库和远程库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他相关git操作请转至git终端操作语法"><span class="toc-number">5.</span> <span class="toc-text">其他相关git操作请转至git终端操作语法</span></a></li></ol>
                 </div>
             
             <p>本篇文章简述下如何将新项目通过终端上传到github，并使用git进行版本开发<br><a id="more"></a></p>
-<h4 id="1-gt-配置SSH通道"><a href="#1-gt-配置SSH通道" class="headerlink" title="1&gt; 配置SSH通道"></a>1&gt; 配置SSH通道</h4><ul>
+<h2 id="配置SSH通道"><a href="#配置SSH通道" class="headerlink" title="配置SSH通道"></a>配置SSH通道</h2><ul>
 <li><p>查看是否存在隐藏文件.ssh  如果存在删除文件夹重新生成key</p>
 <p><code>/Users/《#用户名#&gt;/.ssh/id_rsa</code>  </p>
 </li>
@@ -263,13 +263,13 @@
 <li>添加SSH到GitHub</li>
 </ul>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com  <span class="comment">// 执行完这条指令之后会输出  Are you sure you want to continue connecting (yes/no)?  输入 yes 回车</span></span><br><span class="line">回到github，刷新网页就可以看到钥匙旁的灰色小圆点变绿，就表明已经添加成功了。</span><br></pre></td></tr></table></figure>
-<h4 id="2-gt-本地创建本地git库"><a href="#2-gt-本地创建本地git库" class="headerlink" title="2&gt; 本地创建本地git库"></a>2&gt; 本地创建本地git库</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir LiteraryHeaven&lt;<span class="meta">#git文件夹名称#&gt; // 创建git文件夹</span></span><br><span class="line">cd LiteraryHeaven <span class="comment">// 跳转到相应文件夹</span></span><br><span class="line">git init <span class="comment">// 创建git本地库，之后将你的文件放到文件夹内</span></span><br><span class="line">git status <span class="comment">// 查看本地变了的文件，需要添加的问红色，需要提交的为绿色</span></span><br><span class="line">git add a.tex&lt;<span class="meta">#要添加到git本地库的文件名称#&gt; // 或者使用 git add . 添加所有修改文件，</span></span><br><span class="line">git commit -m<span class="string">"提交日志"</span></span><br></pre></td></tr></table></figure>
-<h4 id="3-gt-创建远程git库"><a href="#3-gt-创建远程git库" class="headerlink" title="3&gt; 创建远程git库"></a>3&gt; 创建远程git库</h4><ul>
+<h2 id="本地创建本地git库"><a href="#本地创建本地git库" class="headerlink" title="本地创建本地git库"></a>本地创建本地git库</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir LiteraryHeaven&lt;<span class="meta">#git文件夹名称#&gt; // 创建git文件夹</span></span><br><span class="line">cd LiteraryHeaven <span class="comment">// 跳转到相应文件夹</span></span><br><span class="line">git init <span class="comment">// 创建git本地库，之后将你的文件放到文件夹内</span></span><br><span class="line">git status <span class="comment">// 查看本地变了的文件，需要添加的问红色，需要提交的为绿色</span></span><br><span class="line">git add a.tex&lt;<span class="meta">#要添加到git本地库的文件名称#&gt; // 或者使用 git add . 添加所有修改文件，</span></span><br><span class="line">git commit -m<span class="string">"提交日志"</span></span><br></pre></td></tr></table></figure>
+<h2 id="创建远程git库"><a href="#创建远程git库" class="headerlink" title="创建远程git库"></a>创建远程git库</h2><ul>
 <li>进入GitHub，创建一个远程库</li>
-<li>进入新建的远程库以SSH方式查看远程库地址，进行复制<h4 id="4-gt-关联本地库和远程库"><a href="#4-gt-关联本地库和远程库" class="headerlink" title="4&gt; 关联本地库和远程库"></a>4&gt; 关联本地库和远程库</h4></li>
+<li>进入新建的远程库以SSH方式查看远程库地址，进行复制</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.关联远程库</span></span><br><span class="line">git remote add origin git@github.com:xxxx/xxxx.git &lt;<span class="meta">#远程库地址t#&gt;  </span></span><br><span class="line"><span class="comment">// 2.要把远程和本地两个不同的项目合并</span></span><br><span class="line"><span class="comment">// 如果直接 pull 会报 fatal: refusing to merge unrelated histories 因此需要添加 --allow-unrelated-histories</span></span><br><span class="line">git pull origin master --allow-unrelated-histories </span><br><span class="line"><span class="comment">// 3.推送本地分支到远程</span></span><br><span class="line">git push origin master </span><br><span class="line"><span class="comment">// 如果报错，意思是push的本地库版本是在远程版本之后使用</span></span><br><span class="line">git remote origin -f <span class="comment">// 强制推送</span></span><br><span class="line">git branch -a <span class="comment">// 查看远程和本地所有分支</span></span><br><span class="line">git pull origin master <span class="comment">// 拉取远程库到本地库</span></span><br><span class="line">git push origin :&lt;<span class="meta">#branchName#&gt;[分支名] // 推送本地分支到远程分支</span></span><br></pre></td></tr></table></figure>
-<h4 id="5-gt-其他相关git操作请转至git终端操作语法"><a href="#5-gt-其他相关git操作请转至git终端操作语法" class="headerlink" title="5&gt; 其他相关git操作请转至git终端操作语法"></a>5&gt; 其他相关git操作请转至<a href="/_posts/git终端操作语法">git终端操作语法</a></h4>
+<h2 id="关联本地库和远程库"><a href="#关联本地库和远程库" class="headerlink" title="关联本地库和远程库"></a>关联本地库和远程库</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.关联远程库</span></span><br><span class="line">git remote add origin git@github.com:xxxx/xxxx.git &lt;<span class="meta">#远程库地址t#&gt;  </span></span><br><span class="line"><span class="comment">// 2.要把远程和本地两个不同的项目合并</span></span><br><span class="line"><span class="comment">// 如果直接 pull 会报 fatal: refusing to merge unrelated histories 因此需要添加 --allow-unrelated-histories</span></span><br><span class="line">git pull origin master --allow-unrelated-histories </span><br><span class="line"><span class="comment">// 3.推送本地分支到远程</span></span><br><span class="line">git push origin master </span><br><span class="line"><span class="comment">// 如果报错，意思是push的本地库版本是在远程版本之后使用</span></span><br><span class="line">git remote origin -f <span class="comment">// 强制推送</span></span><br><span class="line">git branch -a <span class="comment">// 查看远程和本地所有分支</span></span><br><span class="line">git pull origin master <span class="comment">// 拉取远程库到本地库</span></span><br><span class="line">git push origin :&lt;<span class="meta">#branchName#&gt;[分支名] // 推送本地分支到远程分支</span></span><br></pre></td></tr></table></figure>
+<h2 id="其他相关git操作请转至git终端操作语法"><a href="#其他相关git操作请转至git终端操作语法" class="headerlink" title="其他相关git操作请转至git终端操作语法"></a>其他相关git操作请转至<a href="/_posts/git终端操作语法">git终端操作语法</a></h2>
         
         </div>
         <footer class="article-footer">
@@ -279,7 +279,7 @@
 
 </div>
 
-    <a data-url="http://sanwcoder.github.io/2017/04/10/使用终端如何上传代码到GitHub/" data-id="cjg4htu6a000qycv5fyxkxe37" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://sanwcoder.github.io/2017/04/10/使用终端如何上传代码到GitHub/" data-id="cjgjdizz1000q41v50w0zbmmf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -402,6 +402,25 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/04/28/直播App-简介/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/直播/">直播</a></p>
+                            <p class="item-title"><a href="/2018/04/28/直播App-简介/" class="title">直播App-简介</a></p>
+                            <p class="item-date"><time datetime="2018-04-28T11:50:59.000Z" itemprop="datePublished">2018-04-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/04/16/创建静态库/" class="thumbnail">
     
     
@@ -475,25 +494,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/02/10/Swift和OC混编/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-                            <p class="item-title"><a href="/2018/02/10/Swift和OC混编/" class="title">Swift和OC混编</a></p>
-                            <p class="item-date"><time datetime="2018-02-10T06:05:43.000Z" itemprop="datePublished">2018-02-10</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -503,7 +503,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/github/">github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">12</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/github/">github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/直播/">直播</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -512,7 +512,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li></ul>
         </div>
     </div>
 
@@ -521,7 +521,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/a/">.a</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frmamework/">.frmamework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-C/">Object-C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocospod/">cocospod</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-rule/">code rule</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/homebrow/">homebrow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/perfect/">perfect</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/国际化/">国际化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片滤镜/">图片滤镜</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/抓取/">抓取</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/推送/">推送</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音视频/">音视频</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/a/">.a</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frmamework/">.frmamework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-C/">Object-C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocospod/">cocospod</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-rule/">code rule</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/homebrow/">homebrow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/perfect/">perfect</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/国际化/">国际化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片滤镜/">图片滤镜</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/抓取/">抓取</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/推送/">推送</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/直播/">直播</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音视频/">音视频</a><span class="tag-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -530,7 +530,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/a/" style="font-size: 10px;">.a</a> <a href="/tags/frmamework/" style="font-size: 10px;">.frmamework</a> <a href="/tags/Object-C/" style="font-size: 15px;">Object-C</a> <a href="/tags/Swift/" style="font-size: 20px;">Swift</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/cocospod/" style="font-size: 10px;">cocospod</a> <a href="/tags/code-rule/" style="font-size: 10px;">code rule</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/github/" style="font-size: 15px;">github</a> <a href="/tags/homebrow/" style="font-size: 10px;">homebrow</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/perfect/" style="font-size: 15px;">perfect</a> <a href="/tags/国际化/" style="font-size: 10px;">国际化</a> <a href="/tags/图片滤镜/" style="font-size: 10px;">图片滤镜</a> <a href="/tags/抓取/" style="font-size: 10px;">抓取</a> <a href="/tags/推送/" style="font-size: 15px;">推送</a> <a href="/tags/音视频/" style="font-size: 15px;">音视频</a>
+            <a href="/tags/a/" style="font-size: 10px;">.a</a> <a href="/tags/frmamework/" style="font-size: 10px;">.frmamework</a> <a href="/tags/Object-C/" style="font-size: 15px;">Object-C</a> <a href="/tags/Swift/" style="font-size: 20px;">Swift</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/cocospod/" style="font-size: 10px;">cocospod</a> <a href="/tags/code-rule/" style="font-size: 10px;">code rule</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/github/" style="font-size: 15px;">github</a> <a href="/tags/homebrow/" style="font-size: 10px;">homebrow</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/perfect/" style="font-size: 15px;">perfect</a> <a href="/tags/国际化/" style="font-size: 10px;">国际化</a> <a href="/tags/图片滤镜/" style="font-size: 10px;">图片滤镜</a> <a href="/tags/抓取/" style="font-size: 10px;">抓取</a> <a href="/tags/推送/" style="font-size: 15px;">推送</a> <a href="/tags/直播/" style="font-size: 10px;">直播</a> <a href="/tags/音视频/" style="font-size: 15px;">音视频</a>
         </div>
     </div>
 
